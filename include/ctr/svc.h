@@ -26,6 +26,9 @@ extern "C"
         Result svcCreateResourceLimit(Handle *resourceLimit);
         void svcExitThread(void);                                       /* 0x0012F190 (svc 0x09) */
         Result svcCloseHandle(Handle handle);                           /* 0x0018A714 (svc 0x23) */
+#ifdef __ARMCC_VERSION
+        u32 __svc(0x23) svcCloseHandle_inline(Handle handle);
+#endif
         Result svcWaitSynchronization1(Handle handle, s64 nanoseconds); /* 0x0018A868 (svc 0x24) */
         void svcBreak(u32 reason);                                      /* 0x0013EC48 (svc 0x3C) */
         void func_0013EC50(void);                                       /* 0x0013EC50 (yield thread, svc 0x0A) */

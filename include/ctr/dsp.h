@@ -13,12 +13,33 @@ extern "C"
          * ======================================================================== */
 
         extern s32 unk_0086A0A4;
+        extern const u32 unk_00708D68;
         extern u32 unk_00815DFC;
         extern u32 unk_00815C78;
         extern s8 unk_00815DAC;
         extern s8 unk_00815CA0;
         extern u16 unk_00828E90;
+        extern u8  unk_00828EAD;
+        extern s32 unk_00829A74;
         extern u32 unk_0088A85C;
+
+        typedef struct DspContext_00138770
+        {
+                u8  sub_00[0x08]; /* 0x00 - 0x07: passed to func_00148798(53, ..., 2) */
+                u8  sub_08[0x04]; /* 0x08 (8): passed to func_00148798(54, ..., 1024) */
+        } DspContext_00138770;
+
+        typedef struct DspGlobal_008E5200
+        {
+                u8 pad_00[0x04]; /* 0x00 - 0x03 */
+                u8 flag_04;      /* 0x04: active flag for sub-component at +0x14 */
+                u8 flag_05;      /* 0x05: active flag for sub-component at +0x18 */
+                u8 pad_06[0x0E]; /* 0x06 - 0x13 */
+                u32 sub_14;      /* 0x14 (20): first sub-component */
+                u32 sub_18;      /* 0x18 (24): second sub-component */
+        } DspGlobal_008E5200;
+
+        extern DspGlobal_008E5200 g_DspState_008E5200;
 
         typedef struct DspHeader_00136318
         {
@@ -83,7 +104,11 @@ extern "C"
         void func_0013769C(void *arg);
         void func_00146570(u32 *pTemp, void *arg0);
         void func_00147C74(void *obj, void *param);
+        void func_00148024(void);
+        u32  func_00148084(u32 *outHandle);
         u32  func_001480C0(void);
+        s32  func_001481E8(s32 err);
+        void func_00148798(u32 id, void *ptr, u32 flags);
         void func_0016A89C(void *arg);
         void func_00136318(DspHeader_00136318 *header); /* 0x00136318: initializes header */
         void func_0013636C(void *arg0);                 /* 0x0013636C: captures return from func_0012746C and passes to func_00146570 */
@@ -91,6 +116,7 @@ extern "C"
         DspChannel_00136804 *func_00136804(DspChannel_00136804 *obj); /* 0x00136804: clears channel bit in mask 0x00828E90 */
         void func_001375DC(DspComponent_001375DC *obj); /* 0x001375DC: decrements counter at +0x54 after sub-cleanup at +0x18 */
         u32 func_00137054(void);                        /* 0x00137054: returns unk_00815DFC */
+        u32 func_00137114(u32 *pHandle);                /* 0x00137114: closes handle via svc 0x23 and resets to unk_00708D68 */
         u16 func_00137920(DspChannel_00137920 *channel, u16 val); /* 0x00137920: exchange u16 field at +0x34 */
         u16 func_00137930(DspChannel_00137920 *channel, u16 flag); /* 0x00137930: exchange flag bit 0 at +0x36 */
         s8  func_00137A0C(DspChannel_00137920 *channel, s8 state); /* 0x00137A0C: exchange s8 field at +0x38 */
@@ -98,8 +124,13 @@ extern "C"
         bool32 func_00137F28(DspPair_00137F28 *obj, void *param1, void *param2); /* 0x00137F28: conditional pair setter (+0x14, +0x18) */
         u32    func_00137F40(DspBuffer_00137F40 *obj);                            /* 0x00137F40: buffer size computation */
         bool32 func_0013810C(DspPair_00137F28 *obj, void *param1, void *param2); /* 0x0013810C: conditional pair setter (+0x28, +0x2C) */
+        void   func_001384AC(u32 *pHandle);                                       /* 0x001384AC: closes handle if unk_00828EAD is set */
+        void   func_00138590(u32 *pHandle);                                       /* 0x00138590: queries new handle via func_00148084 and replaces existing handle */
         void   func_001385D0(void);                                               /* 0x001385D0: status check and conditional call to func_001371D4 */
         bool32 func_001386D4(const char *str);                                    /* 0x001386D4: validates non-empty string */
+        s32    func_0013873C(void **outPtr);                                      /* 0x0013873C: retrieves sub-component pointer at +0x14 or returns error */
+        s32    func_00138770(DspContext_00138770 *ctx);                           /* 0x00138770: registers two sub-buffers via func_00148798 and returns unk_00829A74 */
+        s32    func_001387B0(void **outPtr);                                      /* 0x001387B0: retrieves sub-component pointer at +0x18 or returns error */
         u32 func_001388CC(const char *str, u32 max_len);                         /* 0x001388CC: strnlen loop */
         s8 func_001389BC(void);                         /* 0x001389BC: returns unk_00815DAC */
         s8 func_00138A80(void);                         /* 0x00138A80: returns unk_00815CA0 */
