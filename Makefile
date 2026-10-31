@@ -376,6 +376,17 @@ build/src/ctr/nn/y2r/func_00113F70.o: src/ctr/nn/y2r/func_00113F70.c
 		$(CC) $(CFLAGS) $< -o $@; \
 	fi
 
+build/src/engine/lfw/func_0010B888.o: src/engine/lfw/func_0010B888.c
+	@mkdir -p $(dir $@)
+	@if [ -f "tools/armcc/4.1/b1049/bin/armcc.exe" ]; then \
+		$(WIBO) tools/armcc/4.1/b1049/bin/armcc.exe $(ARMFLAGS) -Otime $< -o $@; \
+	elif [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
+		$(ARMCC) $(ARMFLAGS) $< -o $@; \
+	else \
+		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
+		$(CC) $(CFLAGS) $< -o $@; \
+	fi
+
 build/%.o: %.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $< -o $@

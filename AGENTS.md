@@ -85,6 +85,11 @@ Para asegurar que el desarrollador (Carlos) comprenda a fondo la arquitectura, r
 
 1. **Preparación Automática por la IA:**
    - Escribir el stub limpio `.s` en el directorio local protegido `asm/<layer>/<subsystem>/<symbol>.s` (ignorado en git) y proporcionar un enlace markdown clickeable para abrirlo en una pestaña del editor.
+   - Crear SIEMPRE la plantilla inicial `.c` en `src/<layer>/<subsystem>/<symbol>.c` incluyendo:
+     1. El `#include` correspondiente.
+     2. Un bloque de comentario arriba con el ensamblador objetivo (Target Assembly) como referencia directa en el editor.
+     3. El bloque Doxygen base y la firma completa de la función con llaves `{}` lista para que Carlos escriba el cuerpo dentro.
+     4. *(Una vez decompilada y validada la función, eliminar el bloque de comentario con el ensamblador de referencia dejando solo el Doxygen y el código C limpio).*
    - Actualizar automáticamente la cabecera correspondiente en `include/<layer>/` con el prototipo de la función y las declaraciones `extern` de variables de memoria.
    - Actualizar el estado en directo ejecutando `python3 tools/export_live.py --symbol <symbol>` para sincronizar `live.json` y `live.txt` con la nueva función activa para el directo/stream.
 2. **Planteamiento del Ejercicio:**

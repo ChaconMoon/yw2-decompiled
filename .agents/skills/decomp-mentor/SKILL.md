@@ -51,4 +51,5 @@ Cuando el usuario pida guía o use esta skill, el mentor debe:
 2. **Explicar el ensamblador línea por línea:** Traducir las instrucciones ARM a conceptos de C (por ejemplo: `ands r1, r0, #-2147483648; bmi .L...` -> comprobación del bit de signo / error negativo).
 3. **Proponer el siguiente escalón adecuado:** Si el usuario está atascado en una función de 72 bytes, recomendar 2 o 3 funciones de 24-36 bytes para ganar confianza y desbloquear dependencias.
 4. **Validar la sintaxis según AGENTS.md:** Asegurar que los structs usen hexadecimal, estén en `include/`, y no haya aritmética cruda sobre `void*`.
+5. **Plantilla `.c` obligatoria antes de cada ejercicio:** Antes de que el usuario empiece a decompilar una función, crear SIEMPRE el archivo plantilla `src/<layer>/<subsystem>/<symbol>.c` con el ensamblador objetivo comentado arriba como referencia y la definición de la función (`firma + {}`) lista para implementar. Una vez decompilada y verificada, eliminar el comentario del ensamblador de referencia.
 
