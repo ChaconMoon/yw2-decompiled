@@ -142,6 +142,7 @@ extern "C"
         void   func_001384AC(u32 *pHandle);                                       /* 0x001384AC: closes handle if unk_00828EAD is set */
         void   func_00138590(u32 *pHandle);                                       /* 0x00138590: queries new handle via func_00148084 and replaces existing handle */
         void   func_001385D0(void);                                               /* 0x001385D0: status check and conditional call to func_001371D4 */
+        s32    func_00138660(const u32 *pHandle);                                 /* 0x00138660: sends IPC command 0x000E0000 */
         bool32 func_001386D4(const char *str);                                    /* 0x001386D4: validates non-empty string */
         bool32 func_001386EC(const char *str);                                    /* 0x001386EC: checks if str starts with "FGONLYT" */
         s32    func_0013873C(void **outPtr);                                      /* 0x0013873C: retrieves sub-component pointer at +0x14 or returns error */
