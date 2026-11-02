@@ -387,7 +387,7 @@ address,symbol,size,layer,subsystem,level,status,description
 0x001389CC,func_001389CC,40,ctr,nn_dsp,6_moderate_caller,matched,Checks unk_00815DAC and invokes func_0016C994
 0x001389F4,func_001389F4,60,ctr,nn_dsp,3_arithmetic_logic,asm_stub,Local arithmetic/bitwise computation
 0x00138A30,func_00138A30,40,ctr,nn_dsp,3_arithmetic_logic,matched,Sends IPC command 0x00170000 (SetSemaphoreMask) via svcSendSyncRequest to DSP service
-0x00138A58,func_00138A58,40,ctr,nn_dsp,3_arithmetic_logic,asm_stub,Sends IPC command 0x001A0000 (SetIirFilterI2S1) via svcSendSyncRequest to DSP service
+0x00138A58,func_00138A58,40,ctr,nn_dsp,3_arithmetic_logic,matched,Sends IPC command 0x001A0000 (SetIirFilterI2S1) via svcSendSyncRequest to DSP service
 0x00138A80,func_00138A80,16,ctr,nn_dsp,2_simple_accessor,matched,nn::dsp global signed byte getter (0x00815CA0)
 0x00138A90,func_00138A90,16,ctr,nn_dsp,2_simple_accessor,matched,nn::dsp global applet state field getter (0x00814E00 offset 0x10)
 0x00138AA0,func_00138AA0,12,ctr,nn_dsp,5_simple_wrapper,matched,nn::dsp singleton wrapper (func_001365E4)

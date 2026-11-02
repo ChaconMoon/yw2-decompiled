@@ -1385,6 +1385,23 @@
       }
     },
     {
+      "name": "ctr/nn_dsp/func_00138A58",
+      "target_path": "expected/func_00138A58.o",
+      "base_path": "build/src/ctr/nn/dsp/func_00138A58.o",
+      "metadata": {
+        "complete": true,
+        "source_path": "src/ctr/nn/dsp/func_00138A58.c",
+        "progress_categories": [
+          "ctr"
+        ]
+      },
+      "scratch": {
+        "platform": "n3ds",
+        "compiler": "armcc_40_821",
+        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
+      }
+    },
+    {
       "name": "ctr/nn_dsp/func_00138A80",
       "target_path": "expected/func_00138A80.o",
       "base_path": "build/src/ctr/nn/dsp/func_00138A80.o",
