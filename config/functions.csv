@@ -379,7 +379,7 @@ address,symbol,size,layer,subsystem,level,status,description
 0x001387B0,func_001387B0,48,ctr,nn_dsp,6_moderate_caller,matched,nn::dsp conditional sub-component pointer getter (+0x18) with error helper call
 0x001387E4,func_001387E4,60,ctr,nn_dsp,3_arithmetic_logic,asm_stub,Local arithmetic/bitwise computation
 0x00138824,func_00138824,52,ctr,nn_dsp,3_arithmetic_logic,asm_stub,Local arithmetic/bitwise computation
-0x00138858,func_00138858,40,ctr,nn_dsp,3_arithmetic_logic,asm_stub,Local arithmetic/bitwise computation
+0x00138858,func_00138858,40,ctr,nn_dsp,3_arithmetic_logic,matched,Sends IPC command 0x000E0000 via svcSendSyncRequest to DSP service
 0x00138880,func_00138880,72,ctr,nn_dsp,4_complex_leaf,asm_stub,Large leaf algorithm
 0x001388CC,func_001388CC,32,ctr,nn_dsp,3_arithmetic_logic,matched,nn::dsp bounded string length (strnlen)
 0x001388EC,func_001388EC,192,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (8 calls)

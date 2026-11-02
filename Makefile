@@ -372,6 +372,17 @@ build/src/ctr/nn/dsp/func_001386EC.o: src/ctr/nn/dsp/func_001386EC.c
 		$(CC) $(CFLAGS) $< -o $@; \
 	fi
 
+build/src/ctr/nn/dsp/func_00138858.o: src/ctr/nn/dsp/func_00138858.c
+	@mkdir -p $(dir $@)
+	@if [ -f "tools/armcc/4.1/b1049/bin/armcc.exe" ]; then \
+		$(WIBO) tools/armcc/4.1/b1049/bin/armcc.exe $(ARMFLAGS) $< -o $@; \
+	elif [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
+		$(ARMCC) $(ARMFLAGS) $< -o $@; \
+	else \
+		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
+		$(CC) $(CFLAGS) $< -o $@; \
+	fi
+
 build/src/ctr/nn/dsp/func_001388CC.o: src/ctr/nn/dsp/func_001388CC.c
 	@mkdir -p $(dir $@)
 	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \

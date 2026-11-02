@@ -44,11 +44,11 @@ Progress is split into categories so that extracted assembly stubs are never cou
 
 | Category | Count | Meaning |
 | :--- | :---: | :--- |
-| **Decompiled C/C++ (Functions)** | **155** / 18,225 (0.85%) | Functions implemented in C/C++ and verified byte-exact |
-| **Total Binary Code Covered** | **3,156 B** / 6,238,892 B (0.0506%) | C/C++ compiled bytes vs total executable `.text` (0.0408% of `7,737,344 B` binary) |
-| **Assembly Stubs (`.s` extracted)** | **346** / 18,225 (1.90%) | Split stubs for building & progressive replacement (62,492 B / 1.0017%) |
+| **Decompiled C/C++ (Functions)** | **156** / 18,225 (0.86%) | Functions implemented in C/C++ and verified byte-exact |
+| **Total Binary Code Covered** | **3,196 B** / 6,238,892 B (0.0512%) | C/C++ compiled bytes vs total executable `.text` (0.0413% of `7,737,344 B` binary) |
+| **Assembly Stubs (`.s` extracted)** | **345** / 18,225 (1.89%) | Split stubs for building & progressive replacement (62,452 B / 1.0010%) |
 | **Build Coverage (C/C++ + ASM Stubs)** | **501** / 18,225 (2.75%) | Combined C/C++ & assembly matching `code.raw.bin` (65,648 B / 1.0522%) |
-| **Layer 1: Nintendo CTR-SDK (`src/ctr/`)** | **113** C matched + **344** stubs | CRT startup, `svc`, `nn::os`, `nn::y2r`, `nn::nex`, `nn::dsp` |
+| **Layer 1: Nintendo CTR-SDK (`src/ctr/`)** | **114** C matched + **343** stubs | CRT startup, `svc`, `nn::os`, `nn::y2r`, `nn::nex`, `nn::dsp` |
 | **Layer 2: Level-5 Engine (`src/engine/`)** | **12** C matched + **2** stubs | `lfw` base classes, `lfwCLoop`, `lxp`, `gds` |
 | **Layer 3: Yo-kai Watch 2 Game (`src/game/`)** | **30** C matched + **0** stubs | `ywCLoop*` state machines, battle, RPG entities |
 | **Cataloged in Manifest** | **504** / 18,225 | Functions actively tracked across `src/` and `scratches/` |

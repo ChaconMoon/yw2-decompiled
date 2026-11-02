@@ -148,6 +148,7 @@ extern "C"
         s32    func_0013873C(void **outPtr);                                      /* 0x0013873C: retrieves sub-component pointer at +0x14 or returns error */
         s32    func_00138770(DspContext_00138770 *ctx);                           /* 0x00138770: registers two sub-buffers via func_00148798 and returns unk_00829A74 */
         s32    func_001387B0(void **outPtr);                                      /* 0x001387B0: retrieves sub-component pointer at +0x18 or returns error */
+        s32    func_00138858(const u32 *pHandle);                                 /* 0x00138858: sends IPC command 0x000E0000 */
         u32 func_001388CC(const char *str, u32 max_len);                         /* 0x001388CC: strnlen loop */
         s8 func_001389BC(void);                         /* 0x001389BC: returns unk_00815DAC */
         u32 func_001389CC(void);                        /* 0x001389CC: checks unk_00815DAC and invokes func_0016C994 */
