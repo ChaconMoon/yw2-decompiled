@@ -25,295 +25,6 @@
   ],
   "units": [
     {
-      "name": "ctr/svc/svcExitProcess",
-      "target_path": "expected/svcExitProcess.o",
-      "base_path": "build/src/ctr/svc/svcExitProcess.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/svcExitProcess.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_os/func_00104D18",
-      "target_path": "expected/func_00104D18.o",
-      "base_path": "build/src/ctr/nn/os/func_00104D18.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/os/func_00104D18.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_os/func_001063F4",
-      "target_path": "expected/func_001063F4.o",
-      "base_path": "build/src/ctr/nn/os/func_001063F4.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/os/func_001063F4.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_os/func_00106504",
-      "target_path": "expected/func_00106504.o",
-      "base_path": "build/src/ctr/nn/os/func_00106504.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/os/func_00106504.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_os/func_00106518",
-      "target_path": "expected/func_00106518.o",
-      "base_path": "build/src/ctr/nn/os/func_00106518.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/os/func_00106518.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_os/func_0010655C",
-      "target_path": "expected/func_0010655C.o",
-      "base_path": "build/src/ctr/nn/os/func_0010655C.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/os/func_0010655C.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_os/func_0010678C",
-      "target_path": "expected/func_0010678C.o",
-      "base_path": "build/src/ctr/nn/os/func_0010678C.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/os/func_0010678C.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/func_0010AA84",
-      "target_path": "expected/func_0010AA84.o",
-      "base_path": "build/src/ctr/svc/func_0010AA84.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/func_0010AA84.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/svcCreateEvent",
-      "target_path": "expected/svcCreateEvent.o",
-      "base_path": "build/src/ctr/svc/svcCreateEvent.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/svcCreateEvent.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/svcDuplicateHandle",
-      "target_path": "expected/svcDuplicateHandle.o",
-      "base_path": "build/src/ctr/svc/svcDuplicateHandle.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/svcDuplicateHandle.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "engine/lfw/func_0010B6D0",
-      "target_path": "expected/func_0010B6D0.o",
-      "base_path": "build/src/engine/lfw/func_0010B6D0.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/engine/lfw/func_0010B6D0.c",
-        "progress_categories": [
-          "engine"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "engine/lfw/func_0010B6D8",
-      "target_path": "expected/func_0010B6D8.o",
-      "base_path": "build/src/engine/lfw/func_0010B6D8.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/engine/lfw/func_0010B6D8.c",
-        "progress_categories": [
-          "engine"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "engine/lfw/func_0010B888",
-      "target_path": "expected/func_0010B888.o",
-      "base_path": "build/src/engine/lfw/func_0010B888.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/engine/lfw/func_0010B888.c",
-        "progress_categories": [
-          "engine"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "engine/lfw/func_0010BBB8",
-      "target_path": "expected/func_0010BBB8.o",
-      "base_path": "build/src/engine/lfw/func_0010BBB8.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/engine/lfw/func_0010BBB8.c",
-        "progress_categories": [
-          "engine"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "engine/lfw/func_0010C598",
-      "target_path": "expected/func_0010C598.o",
-      "base_path": "build/src/engine/lfw/func_0010C598.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/engine/lfw/func_0010C598.c",
-        "progress_categories": [
-          "engine"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "engine/lfw/func_0010C5C8",
-      "target_path": "expected/func_0010C5C8.o",
-      "base_path": "build/src/engine/lfw/func_0010C5C8.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/engine/lfw/func_0010C5C8.c",
-        "progress_categories": [
-          "engine"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "engine/lfw/func_0010C6A4",
-      "target_path": "expected/func_0010C6A4.o",
-      "base_path": "build/src/engine/lfw/func_0010C6A4.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/engine/lfw/func_0010C6A4.c",
-        "progress_categories": [
-          "engine"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
       "name": "game/loops/func_0010C870",
       "target_path": "expected/func_0010C870.o",
       "base_path": "build/src/game/loops/func_0010C870.o",
@@ -416,686 +127,6 @@
       }
     },
     {
-      "name": "ctr/nn_y2r/func_00112AA8",
-      "target_path": "expected/func_00112AA8.o",
-      "base_path": "build/src/ctr/nn/y2r/func_00112AA8.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/y2r/func_00112AA8.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_y2r/func_00112D8C",
-      "target_path": "expected/func_00112D8C.o",
-      "base_path": "build/src/ctr/nn/y2r/func_00112D8C.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/y2r/func_00112D8C.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_y2r/func_00112E60",
-      "target_path": "expected/func_00112E60.o",
-      "base_path": "build/src/ctr/nn/y2r/func_00112E60.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/y2r/func_00112E60.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_y2r/func_00112EC8",
-      "target_path": "expected/func_00112EC8.o",
-      "base_path": "build/src/ctr/nn/y2r/func_00112EC8.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/y2r/func_00112EC8.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_y2r/func_00112EE4",
-      "target_path": "expected/func_00112EE4.o",
-      "base_path": "build/src/ctr/nn/y2r/func_00112EE4.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/y2r/func_00112EE4.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/svcCreateTimer",
-      "target_path": "expected/svcCreateTimer.o",
-      "base_path": "build/src/ctr/svc/svcCreateTimer.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/svcCreateTimer.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/func_00113008",
-      "target_path": "expected/func_00113008.o",
-      "base_path": "build/src/ctr/svc/func_00113008.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/func_00113008.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_y2r/func_00113700",
-      "target_path": "expected/func_00113700.o",
-      "base_path": "build/src/ctr/nn/y2r/func_00113700.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/y2r/func_00113700.cpp",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_y2r/func_001137C0",
-      "target_path": "expected/func_001137C0.o",
-      "base_path": "build/src/ctr/nn/y2r/func_001137C0.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/y2r/func_001137C0.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_y2r/func_001138D0",
-      "target_path": "expected/func_001138D0.o",
-      "base_path": "build/src/ctr/nn/y2r/func_001138D0.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/y2r/func_001138D0.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_y2r/func_00113F00",
-      "target_path": "expected/func_00113F00.o",
-      "base_path": "build/src/ctr/nn/y2r/func_00113F00.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/y2r/func_00113F00.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_y2r/func_00113F4C",
-      "target_path": "expected/func_00113F4C.o",
-      "base_path": "build/src/ctr/nn/y2r/func_00113F4C.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/y2r/func_00113F4C.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_y2r/func_00113F58",
-      "target_path": "expected/func_00113F58.o",
-      "base_path": "build/src/ctr/nn/y2r/func_00113F58.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/y2r/func_00113F58.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_y2r/func_00113F70",
-      "target_path": "expected/func_00113F70.o",
-      "base_path": "build/src/ctr/nn/y2r/func_00113F70.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/y2r/func_00113F70.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_os/func_00127520",
-      "target_path": "expected/func_00127520.o",
-      "base_path": "build/src/ctr/nn/os/func_00127520.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/os/func_00127520.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_os/func_001275D8",
-      "target_path": "expected/func_001275D8.o",
-      "base_path": "build/src/ctr/nn/os/func_001275D8.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/os/func_001275D8.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_os/func_0012788C",
-      "target_path": "expected/func_0012788C.o",
-      "base_path": "build/src/ctr/nn/os/func_0012788C.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/os/func_0012788C.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_ndm/func_00127EE0",
-      "target_path": "expected/func_00127EE0.o",
-      "base_path": "build/src/ctr/nn/ndm/func_00127EE0.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/ndm/func_00127EE0.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_ndm/func_00127EEC",
-      "target_path": "expected/func_00127EEC.o",
-      "base_path": "build/src/ctr/nn/ndm/func_00127EEC.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/ndm/func_00127EEC.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_ndm/func_001280A8",
-      "target_path": "expected/func_001280A8.o",
-      "base_path": "build/src/ctr/nn/ndm/func_001280A8.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/ndm/func_001280A8.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "engine/lxp/func_0012CB00",
-      "target_path": "expected/func_0012CB00.o",
-      "base_path": "build/src/engine/lxp/func_0012CB00.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/engine/lxp/func_0012CB00.c",
-        "progress_categories": [
-          "engine"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/svcExitThread",
-      "target_path": "expected/svcExitThread.o",
-      "base_path": "build/src/ctr/svc/svcExitThread.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/svcExitThread.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/svcCreateResourceLimit",
-      "target_path": "expected/svcCreateResourceLimit.o",
-      "base_path": "build/src/ctr/svc/svcCreateResourceLimit.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/svcCreateResourceLimit.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "engine/lxp/func_0012FEC0",
-      "target_path": "expected/func_0012FEC0.o",
-      "base_path": "build/src/engine/lxp/func_0012FEC0.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/engine/lxp/func_0012FEC0.c",
-        "progress_categories": [
-          "engine"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "engine/lxp/func_00130018",
-      "target_path": "expected/func_00130018.o",
-      "base_path": "build/src/engine/lxp/func_00130018.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/engine/lxp/func_00130018.c",
-        "progress_categories": [
-          "engine"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "engine/lxp/func_001300B0",
-      "target_path": "expected/func_001300B0.o",
-      "base_path": "build/src/engine/lxp/func_001300B0.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/engine/lxp/func_001300B0.c",
-        "progress_categories": [
-          "engine"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_snd/func_0013873C",
-      "target_path": "expected/func_0013873C.o",
-      "base_path": "build/src/ctr/nn/snd/func_0013873C.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/snd/func_0013873C.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_snd/func_00138770",
-      "target_path": "expected/func_00138770.o",
-      "base_path": "build/src/ctr/nn/snd/func_00138770.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/snd/func_00138770.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_snd/func_001387B0",
-      "target_path": "expected/func_001387B0.o",
-      "base_path": "build/src/ctr/nn/snd/func_001387B0.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/snd/func_001387B0.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_dsp/func_001389CC",
-      "target_path": "expected/func_001389CC.o",
-      "base_path": "build/src/ctr/nn/dsp/func_001389CC.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/dsp/func_001389CC.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/func_0013EC38",
-      "target_path": "expected/func_0013EC38.o",
-      "base_path": "build/src/ctr/svc/func_0013EC38.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/func_0013EC38.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/svcBreak",
-      "target_path": "expected/svcBreak.o",
-      "base_path": "build/src/ctr/svc/svcBreak.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/svcBreak.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/func_0013EC50",
-      "target_path": "expected/func_0013EC50.o",
-      "base_path": "build/src/ctr/svc/func_0013EC50.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/func_0013EC50.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/func_0013EC5C",
-      "target_path": "expected/func_0013EC5C.o",
-      "base_path": "build/src/ctr/svc/func_0013EC5C.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/func_0013EC5C.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/svcWaitSynchronizationN",
-      "target_path": "expected/svcWaitSynchronizationN.o",
-      "base_path": "build/src/ctr/svc/svcWaitSynchronizationN.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/svcWaitSynchronizationN.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "engine/core/func_0013F29C",
-      "target_path": "expected/func_0013F29C.o",
-      "base_path": "build/src/engine/core/func_0013F29C.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/engine/core/func_0013F29C.c",
-        "progress_categories": [
-          "engine"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/svcCreateAddressArbiter",
-      "target_path": "expected/svcCreateAddressArbiter.o",
-      "base_path": "build/src/ctr/svc/svcCreateAddressArbiter.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/svcCreateAddressArbiter.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/svcSleepThread",
-      "target_path": "expected/svcSleepThread.o",
-      "base_path": "build/src/ctr/svc/svcSleepThread.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/svcSleepThread.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/svcGetThreadId",
-      "target_path": "expected/svcGetThreadId.o",
-      "base_path": "build/src/ctr/svc/svcGetThreadId.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/svcGetThreadId.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/svcArbitrateAddress",
-      "target_path": "expected/svcArbitrateAddress.o",
-      "base_path": "build/src/ctr/svc/svcArbitrateAddress.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/svcArbitrateAddress.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
       "name": "game/core/func_00171C78",
       "target_path": "expected/func_00171C78.o",
       "base_path": "build/src/game/core/func_00171C78.o",
@@ -1130,148 +161,12 @@
       }
     },
     {
-      "name": "ctr/svc/svcCloseHandle",
-      "target_path": "expected/svcCloseHandle.o",
-      "base_path": "build/src/ctr/svc/svcCloseHandle.o",
+      "name": "ctr/svc_Api",
+      "target_path": "expected/svc_Api.o",
+      "base_path": "build/src/ctr/svc/svc_Api.o",
       "metadata": {
         "complete": true,
-        "source_path": "src/ctr/svc/svcCloseHandle.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/func_0018A71C",
-      "target_path": "expected/func_0018A71C.o",
-      "base_path": "build/src/ctr/svc/func_0018A71C.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/func_0018A71C.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/svcCreateMemoryBlock",
-      "target_path": "expected/svcCreateMemoryBlock.o",
-      "base_path": "build/src/ctr/svc/svcCreateMemoryBlock.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/svcCreateMemoryBlock.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/svcCreateThread",
-      "target_path": "expected/svcCreateThread.o",
-      "base_path": "build/src/ctr/svc/svcCreateThread.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/svcCreateThread.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/svcGetHandleInfo",
-      "target_path": "expected/svcGetHandleInfo.o",
-      "base_path": "build/src/ctr/svc/svcGetHandleInfo.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/svcGetHandleInfo.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/svcControlMemory",
-      "target_path": "expected/svcControlMemory.o",
-      "base_path": "build/src/ctr/svc/svcControlMemory.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/svcControlMemory.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/svcWaitSynchronization1",
-      "target_path": "expected/svcWaitSynchronization1.o",
-      "base_path": "build/src/ctr/svc/svcWaitSynchronization1.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/svcWaitSynchronization1.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/nn_nex/func_00301248",
-      "target_path": "expected/func_00301248.o",
-      "base_path": "build/src/ctr/nn/nex/func_00301248.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/nn/nex/func_00301248.c",
-        "progress_categories": [
-          "ctr"
-        ]
-      },
-      "scratch": {
-        "platform": "n3ds",
-        "compiler": "armcc_40_821",
-        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
-      }
-    },
-    {
-      "name": "ctr/svc/func_005F015C",
-      "target_path": "expected/func_005F015C.o",
-      "base_path": "build/src/ctr/svc/func_005F015C.o",
-      "metadata": {
-        "complete": true,
-        "source_path": "src/ctr/svc/func_005F015C.c",
+        "source_path": "src/ctr/svc/svc_Api.c",
         "progress_categories": [
           "ctr"
         ]
@@ -1317,6 +212,23 @@
       }
     },
     {
+      "name": "ctr/ndm_Api",
+      "target_path": "expected/ndm_Api.o",
+      "base_path": "build/src/ctr/nn/ndm/ndm_Api.o",
+      "metadata": {
+        "complete": true,
+        "source_path": "src/ctr/nn/ndm/ndm_Api.cpp",
+        "progress_categories": [
+          "ctr"
+        ]
+      },
+      "scratch": {
+        "platform": "n3ds",
+        "compiler": "armcc_40_821",
+        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
+      }
+    },
+    {
       "name": "ctr/snd_Dspsnd",
       "target_path": "expected/snd_Dspsnd.o",
       "base_path": "build/src/ctr/nn/snd/snd_Dspsnd.o",
@@ -1340,6 +252,23 @@
       "metadata": {
         "complete": true,
         "source_path": "src/ctr/nn/applet/applet.cpp",
+        "progress_categories": [
+          "ctr"
+        ]
+      },
+      "scratch": {
+        "platform": "n3ds",
+        "compiler": "armcc_40_821",
+        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
+      }
+    },
+    {
+      "name": "ctr/nex_RootObject",
+      "target_path": "expected/nex_RootObject.o",
+      "base_path": "build/src/ctr/nn/nex/nex_RootObject.o",
+      "metadata": {
+        "complete": true,
+        "source_path": "src/ctr/nn/nex/nex_RootObject.cpp",
         "progress_categories": [
           "ctr"
         ]
@@ -1391,6 +320,57 @@
       "metadata": {
         "complete": true,
         "source_path": "src/ctr/nn/nex/StationConnectionInfo.cpp",
+        "progress_categories": [
+          "ctr"
+        ]
+      },
+      "scratch": {
+        "platform": "n3ds",
+        "compiler": "armcc_40_821",
+        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
+      }
+    },
+    {
+      "name": "ctr/os_Api",
+      "target_path": "expected/os_Api.o",
+      "base_path": "build/src/ctr/nn/os/os_Api.o",
+      "metadata": {
+        "complete": true,
+        "source_path": "src/ctr/nn/os/os_Api.cpp",
+        "progress_categories": [
+          "ctr"
+        ]
+      },
+      "scratch": {
+        "platform": "n3ds",
+        "compiler": "armcc_40_821",
+        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
+      }
+    },
+    {
+      "name": "ctr/y2r_Y2r",
+      "target_path": "expected/y2r_Y2r.o",
+      "base_path": "build/src/ctr/nn/y2r/y2r_Y2r.o",
+      "metadata": {
+        "complete": true,
+        "source_path": "src/ctr/nn/y2r/y2r_Y2r.cpp",
+        "progress_categories": [
+          "ctr"
+        ]
+      },
+      "scratch": {
+        "platform": "n3ds",
+        "compiler": "armcc_40_821",
+        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
+      }
+    },
+    {
+      "name": "ctr/detail_Api",
+      "target_path": "expected/detail_Api.o",
+      "base_path": "build/src/ctr/nn/y2r/detail_Api.o",
+      "metadata": {
+        "complete": true,
+        "source_path": "src/ctr/nn/y2r/detail_Api.cpp",
         "progress_categories": [
           "ctr"
         ]
@@ -1580,6 +560,74 @@
         "source_path": "src/game/loops/ywCLoopMenu.cpp",
         "progress_categories": [
           "game"
+        ]
+      },
+      "scratch": {
+        "platform": "n3ds",
+        "compiler": "armcc_40_821",
+        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
+      }
+    },
+    {
+      "name": "engine/lfwCObjManager",
+      "target_path": "expected/lfwCObjManager.o",
+      "base_path": "build/src/engine/core/lfwCObjManager.o",
+      "metadata": {
+        "complete": true,
+        "source_path": "src/engine/core/lfwCObjManager.cpp",
+        "progress_categories": [
+          "engine"
+        ]
+      },
+      "scratch": {
+        "platform": "n3ds",
+        "compiler": "armcc_40_821",
+        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
+      }
+    },
+    {
+      "name": "engine/lfwCLoop",
+      "target_path": "expected/lfwCLoop.o",
+      "base_path": "build/src/engine/lfw/lfwCLoop.o",
+      "metadata": {
+        "complete": true,
+        "source_path": "src/engine/lfw/lfwCLoop.cpp",
+        "progress_categories": [
+          "engine"
+        ]
+      },
+      "scratch": {
+        "platform": "n3ds",
+        "compiler": "armcc_40_821",
+        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
+      }
+    },
+    {
+      "name": "engine/lfwCLoopEmpty",
+      "target_path": "expected/lfwCLoopEmpty.o",
+      "base_path": "build/src/engine/lfw/lfwCLoopEmpty.o",
+      "metadata": {
+        "complete": true,
+        "source_path": "src/engine/lfw/lfwCLoopEmpty.cpp",
+        "progress_categories": [
+          "engine"
+        ]
+      },
+      "scratch": {
+        "platform": "n3ds",
+        "compiler": "armcc_40_821",
+        "c_flags": "--cpu=MPCore -O3 -Otime --split_sections"
+      }
+    },
+    {
+      "name": "engine/lxpCMemory",
+      "target_path": "expected/lxpCMemory.o",
+      "base_path": "build/src/engine/lxp/lxpCMemory.o",
+      "metadata": {
+        "complete": true,
+        "source_path": "src/engine/lxp/lxpCMemory.cpp",
+        "progress_categories": [
+          "engine"
         ]
       },
       "scratch": {

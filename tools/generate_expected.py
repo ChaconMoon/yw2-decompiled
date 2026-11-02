@@ -252,9 +252,9 @@ def main():
                         fn_size = manifest_size_by_sym.get(sym, 0)
                         if fn_size <= 0:
                             break
-                        fn_offset = fn_addr - BASE_ADDR
-                        raw_bytes = code_bin[fn_offset:fn_offset + fn_size]
-                        byte_lines = ", ".join(f"0x{b:02x}" for b in raw_bytes)
+                        fn_offset = fn_addr - 0x00100000
+                        raw_slice = raw_bytes[fn_offset:fn_offset + fn_size]
+                        byte_lines = ", ".join(f"0x{b:02x}" for b in raw_slice)
                         fallback_parts.append(f".global {sym}\n.type {sym}, %function\n{sym}:\n    .byte {byte_lines}\n.size {sym}, . - {sym}\n")
                     else:
                         with tempfile.NamedTemporaryFile("w", suffix=".s", delete=False) as tf2:

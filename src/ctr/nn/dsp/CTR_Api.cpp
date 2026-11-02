@@ -12,6 +12,8 @@
 
 extern "C" {
 
+#ifndef CTR_API_PASS_B1049
+
 /**
  * @brief Sets a value in the Thread Local Storage (TLS) array.
  * @address 0x00136780
@@ -218,6 +220,39 @@ s8 func_001389BC(void)
     return unk_00815DAC;
 }
 
+#else /* CTR_API_PASS_B1049 */
+
+/**
+ * @brief Checks DSP initialization state and conditionally triggers callback dispatch.
+ * @address 0x001389CC
+ * @size 40 bytes
+ *
+ * @return u32 Result code: 0x00202BF8 if uninitialized, or return value of func_001488F0.
+ */
+#pragma push
+#pragma Otime
+u32 func_001389CC(void)
+{
+    u32 res;
+
+    if (func_001389BC() == 0)
+    {
+        res = 0x00202BF8;
+    }
+    else
+    {
+        func_0016C994();
+        res = func_001488F0();
+    }
+
+    return res;
+}
+#pragma pop
+
+#endif /* CTR_API_PASS_B1049 */
+
+#ifndef CTR_API_PASS_B1049
+
 /**
  * @brief Reads the 8-bit signed value stored at unk_00815CA0.
  * @address 0x00138A80
@@ -271,5 +306,7 @@ void func_00138B58(void)
 {
     func_00136594(&unk_00815C78);
 }
+
+#endif /* !CTR_API_PASS_B1049 */
 
 } // extern "C"

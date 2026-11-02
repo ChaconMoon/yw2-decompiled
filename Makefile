@@ -102,16 +102,6 @@ dump:
 	fi
 
 
-build/src/ctr/nn/os/func_00104D18.o: CFLAGS += -ffixed-r3 -ffixed-r2
-build/src/ctr/nn/os/func_001063F4.o: CFLAGS += -ffixed-r3 -ffixed-r2 -ffixed-r1
-build/src/ctr/nn/os/func_0010655C.o: CFLAGS += -ffixed-r3 -ffixed-r2
-build/src/ctr/nn/os/func_0010678C.o: CFLAGS += -ffixed-r3 -ffixed-r2 -ffixed-r1
-build/src/ctr/nn/os/func_0012788C.o: CFLAGS += -ffixed-r3 -ffixed-r2
-build/src/ctr/nn/ndm/func_001280A8.o: CFLAGS += -ffixed-r3
-build/src/engine/lfw/func_0010BBB8.o: CFLAGS += -ffixed-r3 -ffixed-r2
-build/src/engine/lfw/func_0010C598.o: CFLAGS += -ffixed-r3 -ffixed-r2 -ffixed-r1
-build/src/engine/lfw/func_0010C5C8.o: CFLAGS += -ffixed-r3 -ffixed-r2
-build/src/engine/lfw/func_0010C6A4.o: CFLAGS += -ffixed-r3 -ffixed-r2
 build/src/game/loops/func_0010C870.o: CFLAGS += -ffixed-r3 -ffixed-r2
 build/src/game/loops/func_0010C8A0.o: CFLAGS += -ffixed-r3 -ffixed-r2
 build/src/game/loops/func_0010CA68.o: CFLAGS += -ffixed-r3 -ffixed-r2
@@ -123,26 +113,15 @@ build/src/ctr/nn/nex/qResult.o: ARMFLAGS += -Otime
 build/src/ctr/nn/applet/applet.o: ARMFLAGS += --split_sections
 build/src/ctr/nn/dsp/dsp_DSP.o: ARMFLAGS += --split_sections
 build/src/ctr/nn/dsp/CTR_Api.o: ARMFLAGS += --split_sections
-
-build/src/ctr/nn/os/func_00106504.o: ARMFLAGS += -Otime
-build/src/ctr/nn/os/func_00106504.o: src/ctr/nn/os/func_00106504.c
-	@mkdir -p $(dir $@)
-	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
-		$(ARMCC) $(ARMFLAGS) $< -o $@; \
-	else \
-		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
-		$(CC) $(CFLAGS) $< -o $@; \
-	fi
-
-build/src/ctr/nn/os/func_00106518.o: ARMFLAGS += -Otime
-build/src/ctr/nn/os/func_00106518.o: src/ctr/nn/os/func_00106518.c
-	@mkdir -p $(dir $@)
-	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
-		$(ARMCC) $(ARMFLAGS) $< -o $@; \
-	else \
-		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
-		$(CC) $(CFLAGS) $< -o $@; \
-	fi
+build/src/ctr/nn/ndm/ndm_Api.o: ARMFLAGS += --split_sections
+build/src/ctr/nn/os/os_Api.o: ARMFLAGS += --split_sections
+build/src/ctr/nn/y2r/y2r_Y2r.o: ARMFLAGS += --split_sections --cpu=arm1136j-s
+build/src/ctr/nn/y2r/detail_Api.o: ARMFLAGS += --split_sections
+build/src/ctr/nn/nex/nex_RootObject.o: ARMFLAGS += --split_sections
+build/src/engine/lfw/lfwCLoopEmpty.o: ARMFLAGS += --split_sections
+build/src/engine/lfw/lfwCLoop.o: ARMFLAGS += --split_sections
+build/src/engine/lxp/lxpCMemory.o: ARMFLAGS += --split_sections
+build/src/engine/core/lfwCObjManager.o: ARMFLAGS += --split_sections
 
 build/src/game/loops/func_0010C880.o: ARMFLAGS += -Otime
 build/src/game/loops/func_0010C880.o: src/game/loops/func_0010C880.c
@@ -175,123 +154,37 @@ build/src/ctr/nn/dsp/dsp_DSP.o: src/ctr/nn/dsp/dsp_DSP.cpp
 
 build/src/ctr/nn/dsp/CTR_Api.o: src/ctr/nn/dsp/CTR_Api.cpp
 	@mkdir -p $(dir $@)
-	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
+	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ] && [ -f "tools/armcc/4.1/b1049/bin/armcc.exe" ]; then \
+		$(ARMCC) $(ARMFLAGS) --split_sections --cpp $< -o $@.p1 && \
+		$(WIBO) tools/armcc/4.1/b1049/bin/armcc.exe $(ARMFLAGS) -DCTR_API_PASS_B1049 -Otime --split_sections --cpp $< -o $@.p2 && \
+		arm-none-eabi-ld -r $@.p1 $@.p2 -o $@ && rm -f $@.p1 $@.p2; \
+	elif [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
 		$(ARMCC) $(ARMFLAGS) --split_sections --cpp $< -o $@; \
-	elif [ -f "tools/armcc/4.1/b1049/bin/armcc.exe" ]; then \
-		$(WIBO) tools/armcc/4.1/b1049/bin/armcc.exe $(ARMFLAGS) --split_sections --cpp $< -o $@; \
 	else \
 		$(CXX) $(CXXFLAGS) -ffunction-sections $< -o $@; \
 	fi
 
 build/src/ctr/nn/snd/snd_Dspsnd.o: src/ctr/nn/snd/snd_Dspsnd.cpp
 	@mkdir -p $(dir $@)
-	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
+	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ] && [ -f "tools/armcc/4.1/b1049/bin/armcc.exe" ] && [ -f "tools/armcc/4.1/b561/bin/armcc.exe" ]; then \
+		$(ARMCC) $(ARMFLAGS) --split_sections --cpp $< -o $@.p1 && \
+		$(WIBO) tools/armcc/4.1/b1049/bin/armcc.exe --cpu=mpcore -O2 -Otime -Ono_tailcall --gnu -c -I . -I include -DSND_DSPSND_PASS_B1049 --split_sections --cpp $< -o $@.p2 && \
+		$(WIBO) tools/armcc/4.1/b561/bin/armcc.exe $(ARMFLAGS) -Otime -DSND_DSPSND_PASS_B561 --split_sections --cpp $< -o $@.p3 && \
+		arm-none-eabi-ld -r $@.p1 $@.p2 $@.p3 -o $@ && rm -f $@.p1 $@.p2 $@.p3; \
+	elif [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
 		$(ARMCC) $(ARMFLAGS) --split_sections --cpp $< -o $@; \
-	elif [ -f "tools/armcc/4.1/b1049/bin/armcc.exe" ]; then \
-		$(WIBO) tools/armcc/4.1/b1049/bin/armcc.exe $(ARMFLAGS) --split_sections --cpp $< -o $@; \
 	else \
 		$(CXX) $(CXXFLAGS) -ffunction-sections $< -o $@; \
 	fi
 
-build/src/ctr/nn/dsp/func_001389CC.o: src/ctr/nn/dsp/func_001389CC.c
+build/src/engine/lfw/lfwCLoop.o: src/engine/lfw/lfwCLoop.cpp
 	@mkdir -p $(dir $@)
 	@if [ -f "tools/armcc/4.1/b1049/bin/armcc.exe" ]; then \
-		$(WIBO) tools/armcc/4.1/b1049/bin/armcc.exe $(ARMFLAGS) -Otime $< -o $@; \
+		$(WIBO) tools/armcc/4.1/b1049/bin/armcc.exe $(ARMFLAGS) --split_sections --cpp $< -o $@; \
 	elif [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
-		$(ARMCC) $(ARMFLAGS) $< -o $@; \
+		$(ARMCC) $(ARMFLAGS) --split_sections --cpp $< -o $@; \
 	else \
-		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
-		$(CC) $(CFLAGS) $< -o $@; \
-	fi
-
-
-build/src/ctr/nn/y2r/%.o: src/ctr/nn/y2r/%.c
-	@mkdir -p $(dir $@)
-	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
-		$(ARMCC) $(ARMFLAGS) $< -o $@; \
-	else \
-		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
-		$(CC) $(CFLAGS) $< -o $@; \
-	fi
-
-build/src/ctr/nn/y2r/func_00112E60.o: src/ctr/nn/y2r/func_00112E60.c
-	@mkdir -p $(dir $@)
-	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
-		$(ARMCC) $(ARMFLAGS) --cpu=arm1136j-s $< -o $@; \
-	else \
-		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
-		$(CC) $(CFLAGS) $< -o $@; \
-	fi
-
-build/src/ctr/nn/y2r/func_001137C0.o: src/ctr/nn/y2r/func_001137C0.c
-	@mkdir -p $(dir $@)
-	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
-		$(ARMCC) $(ARMFLAGS) $< -o $@; \
-	else \
-		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
-		$(CC) $(CFLAGS) $< -o $@; \
-	fi
-
-build/src/ctr/nn/y2r/func_00113F58.o: src/ctr/nn/y2r/func_00113F58.c
-	@mkdir -p $(dir $@)
-	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
-		$(ARMCC) $(ARMFLAGS) $< -o $@; \
-	else \
-		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
-		$(CC) $(CFLAGS) $< -o $@; \
-	fi
-
-build/src/ctr/nn/y2r/func_00113F70.o: src/ctr/nn/y2r/func_00113F70.c
-	@mkdir -p $(dir $@)
-	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
-		$(ARMCC) $(ARMFLAGS) $< -o $@; \
-	else \
-		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
-		$(CC) $(CFLAGS) $< -o $@; \
-	fi
-
-build/src/ctr/nn/snd/func_0013873C.o: src/ctr/nn/snd/func_0013873C.c
-	@mkdir -p $(dir $@)
-	@if [ -f "tools/armcc/4.1/b1049/bin/armcc.exe" ]; then \
-		$(WIBO) tools/armcc/4.1/b1049/bin/armcc.exe --cpu=mpcore -O2 -Otime -Ono_tailcall --gnu -c -I . -I include $< -o $@; \
-	elif [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
-		$(ARMCC) $(ARMFLAGS) -Ono_tailcall $< -o $@; \
-	else \
-		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
-		$(CC) $(CFLAGS) $< -o $@; \
-	fi
-
-build/src/ctr/nn/snd/func_00138770.o: src/ctr/nn/snd/func_00138770.c
-	@mkdir -p $(dir $@)
-	@if [ -f "tools/armcc/4.1/b561/bin/armcc.exe" ]; then \
-		$(WIBO) tools/armcc/4.1/b561/bin/armcc.exe $(ARMFLAGS) -Otime $< -o $@; \
-	elif [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
-		$(ARMCC) $(ARMFLAGS) -Otime $< -o $@; \
-	else \
-		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
-		$(CC) $(CFLAGS) $< -o $@; \
-	fi
-
-build/src/ctr/nn/snd/func_001387B0.o: src/ctr/nn/snd/func_001387B0.c
-	@mkdir -p $(dir $@)
-	@if [ -f "tools/armcc/4.1/b1049/bin/armcc.exe" ]; then \
-		$(WIBO) tools/armcc/4.1/b1049/bin/armcc.exe --cpu=mpcore -O2 -Otime -Ono_tailcall --gnu -c -I . -I include $< -o $@; \
-	elif [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
-		$(ARMCC) $(ARMFLAGS) -Ono_tailcall $< -o $@; \
-	else \
-		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
-		$(CC) $(CFLAGS) $< -o $@; \
-	fi
-
-build/src/engine/lfw/func_0010B888.o: src/engine/lfw/func_0010B888.c
-	@mkdir -p $(dir $@)
-	@if [ -f "tools/armcc/4.1/b1049/bin/armcc.exe" ]; then \
-		$(WIBO) tools/armcc/4.1/b1049/bin/armcc.exe $(ARMFLAGS) -Otime $< -o $@; \
-	elif [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
-		$(ARMCC) $(ARMFLAGS) $< -o $@; \
-	else \
-		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
-		$(CC) $(CFLAGS) $< -o $@; \
+		$(CXX) $(CXXFLAGS) -ffunction-sections $< -o $@; \
 	fi
 
 build/%.o: %.c

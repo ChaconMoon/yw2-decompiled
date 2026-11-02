@@ -44,6 +44,10 @@ typedef s32                 bool32;
 typedef u32                 uintptr_t;
 typedef s32                 intptr_t;
 
+#ifndef __cplusplus
+typedef _Bool               bool;
+#endif
+
 #ifndef NULL
 #ifdef __cplusplus
 #define NULL 0

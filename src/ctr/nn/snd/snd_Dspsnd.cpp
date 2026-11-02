@@ -13,6 +13,8 @@
 
 extern "C" {
 
+#if !defined(SND_DSPSND_PASS_B1049) && !defined(SND_DSPSND_PASS_B561)
+
 /**
  * @brief Jump thunk (trampoline) forwarding to func_0013457C.
  * @address 0x0013628C
@@ -268,5 +270,54 @@ bool32 func_0013810C(DspPair_00137F28 *obj, void *param1, void *param2)
     obj->field_2C = param2;
     return TRUE;
 }
+
+#endif /* !SND_DSPSND_PASS_B1049 && !SND_DSPSND_PASS_B561 */
+
+#ifdef SND_DSPSND_PASS_B1049
+
+/**
+ * @brief func_0013873C
+ * @address 0x0013873C
+ * nn::snd conditional sub-component pointer getter (+0x14) with error helper call.
+ */
+s32 func_0013873C(void **outPtr)
+{
+    void *ptr = (g_DspState_008E5200.flag_04 == 0) ? NULL : &g_DspState_008E5200.sub_14;
+    *outPtr   = ptr;
+    return (ptr == NULL) ? func_001481E8(43) : 0;
+}
+
+/**
+ * @brief func_001387B0
+ * @address 0x001387B0
+ * nn::snd conditional sub-component pointer getter (+0x18) with error helper call.
+ */
+s32 func_001387B0(void **outPtr)
+{
+    void *ptr = (g_DspState_008E5200.flag_05 == 0) ? NULL : &g_DspState_008E5200.sub_18;
+    *outPtr   = ptr;
+    return (ptr == NULL) ? func_001481E8(43) : 0;
+}
+
+#endif /* SND_DSPSND_PASS_B1049 */
+
+#ifdef SND_DSPSND_PASS_B561
+
+/**
+ * @brief func_00138770
+ * @address 0x00138770
+ * nn::snd sequential sub-buffer registration (IDs 53 and 54) and global status return.
+ */
+s32 func_00138770(DspContext_00138770 *ctx)
+{
+    DspContext_00138770 *p  = ctx;
+    void                *p0 = p->sub_00;
+    unk_00829A74            = 0;
+    func_00148798(53, p0, 2);
+    func_00148798(54, p->sub_08, 1024);
+    return unk_00829A74;
+}
+
+#endif /* SND_DSPSND_PASS_B561 */
 
 } // extern "C"

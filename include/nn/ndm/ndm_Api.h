@@ -1,12 +1,10 @@
-#pragma once
+/**
+ * @file ndm_Api.h
+ * @brief Nintendo 3DS Network Daemon Manager API (`nn::ndm`).
+ */
+#ifndef NN_NDM_NDM_API_H_
+#define NN_NDM_NDM_API_H_
 
-#include <nn/Result.h>
+#include "ctr/ndm.h"
 
-namespace nn {
-namespace ndm {
-
-    Result Initialize();
-    Result SuspendScheduler(bool);
-
-} // namespace ndm
-} // namespace nn
+#endif /* NN_NDM_NDM_API_H_ */
