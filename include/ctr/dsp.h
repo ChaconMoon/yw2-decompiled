@@ -152,6 +152,8 @@ extern "C"
         u32 func_001388CC(const char *str, u32 max_len);                         /* 0x001388CC: strnlen loop */
         s8 func_001389BC(void);                         /* 0x001389BC: returns unk_00815DAC */
         u32 func_001389CC(void);                        /* 0x001389CC: checks unk_00815DAC and invokes func_0016C994 */
+        s32 func_00138A30(const u32 *pHandle);         /* 0x00138A30: sends IPC command 0x00170000 */
+        s32 func_00138A58(const u32 *pHandle);         /* 0x00138A58: sends IPC command 0x001A0000 */
         s8 func_00138A80(void);                         /* 0x00138A80: returns unk_00815CA0 */
         u32 func_00138A90(void);                        /* 0x00138A90: returns applet state field at 0x00814E00 (+0x10) */
         void func_00138AA0(void);                       /* 0x00138AA0: singleton wrapper -> func_001365E4(&unk_00815C78) */

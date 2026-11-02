@@ -44,14 +44,14 @@ Progress is split into categories so that extracted assembly stubs are never cou
 
 | Category | Count | Meaning |
 | :--- | :---: | :--- |
-| **Decompiled C/C++ (Functions)** | **156** / 18,225 (0.86%) | Functions implemented in C/C++ and verified byte-exact |
-| **Total Binary Code Covered** | **3,196 B** / 6,238,892 B (0.0512%) | C/C++ compiled bytes vs total executable `.text` (0.0413% of `7,737,344 B` binary) |
+| **Decompiled C/C++ (Functions)** | **157** / 18,225 (0.86%) | Functions implemented in C/C++ and verified byte-exact |
+| **Total Binary Code Covered** | **3,236 B** / 6,238,892 B (0.0519%) | C/C++ compiled bytes vs total executable `.text` (0.0418% of `7,737,344 B` binary) |
 | **Assembly Stubs (`.s` extracted)** | **345** / 18,225 (1.89%) | Split stubs for building & progressive replacement (62,452 B / 1.0010%) |
-| **Build Coverage (C/C++ + ASM Stubs)** | **501** / 18,225 (2.75%) | Combined C/C++ & assembly matching `code.raw.bin` (65,648 B / 1.0522%) |
-| **Layer 1: Nintendo CTR-SDK (`src/ctr/`)** | **114** C matched + **343** stubs | CRT startup, `svc`, `nn::os`, `nn::y2r`, `nn::nex`, `nn::dsp` |
+| **Build Coverage (C/C++ + ASM Stubs)** | **502** / 18,225 (2.75%) | Combined C/C++ & assembly matching `code.raw.bin` (65,688 B / 1.0529%) |
+| **Layer 1: Nintendo CTR-SDK (`src/ctr/`)** | **115** C matched + **343** stubs | CRT startup, `svc`, `nn::os`, `nn::y2r`, `nn::nex`, `nn::dsp` |
 | **Layer 2: Level-5 Engine (`src/engine/`)** | **12** C matched + **2** stubs | `lfw` base classes, `lfwCLoop`, `lxp`, `gds` |
 | **Layer 3: Yo-kai Watch 2 Game (`src/game/`)** | **30** C matched + **0** stubs | `ywCLoop*` state machines, battle, RPG entities |
-| **Cataloged in Manifest** | **504** / 18,225 | Functions actively tracked across `src/` and `scratches/` |
+| **Cataloged in Manifest** | **505** / 18,225 | Functions actively tracked across `src/` and `scratches/` |
 | **Executable Size (`.text`)** | 6,238,892 B | Exact code segment size from NCCH ExHeader (EU `00040000001B2900`) |
 | **Full Binary Image (`code.raw.bin`)** | 7,737,344 B | Decompressed CXI `.code` image (`.text` + `.rodata` + `.data`) |
 | **Architecture** | ARM11 MPCore (ARMv6K) | 32-bit Little Endian, VMA `0x00100000` |

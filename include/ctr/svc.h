@@ -29,6 +29,9 @@ extern "C"
 #ifdef __ARMCC_VERSION
         u32 __svc(0x23) svcCloseHandle_inline(Handle handle);
         s32 __svc(0x32) svcSendSyncRequest_inline(Handle session);
+#else
+        u32 svcCloseHandle_inline(Handle handle);
+        s32 svcSendSyncRequest_inline(Handle session);
 #endif
         Result svcWaitSynchronization1(Handle handle, s64 nanoseconds); /* 0x0018A868 (svc 0x24) */
         void svcBreak(u32 reason);                                      /* 0x0013EC48 (svc 0x3C) */
