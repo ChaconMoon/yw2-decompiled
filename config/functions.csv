@@ -302,29 +302,29 @@ address,symbol,size,layer,subsystem,level,status,description
 0x0012FEC0,func_0012FEC0,8,engine,lxp,1_leaf_stub,matched,lxpCMemory boolean true stub (returns constant 1)
 0x00130018,func_00130018,8,engine,lxp,1_leaf_stub,matched,lxpCMemory virtual boolean true stub (returns constant 1)
 0x001300B0,func_001300B0,12,engine,lxp,2_accessor,matched,lxpCMemory manager pointer getter via literal pool (0x00868F10)
-0x00136154,func_00136154,176,ctr,nn_dsp,7_complex_caller,asm_stub,"Complex caller (27 calls, vtable)"
-0x00136204,func_00136204,136,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (8 calls)
-0x0013628C,thunk_FUN_0013457c,4,ctr,nn_dsp,5_simple_wrapper,matched,Single function call wrapper / thunk
-0x00136290,func_00136290,136,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (11 calls)
+0x00136154,func_00136154,176,ctr,nn_snd,7_complex_caller,asm_stub,"Complex caller (27 calls, vtable)"
+0x00136204,func_00136204,136,ctr,nn_snd,7_complex_caller,asm_stub,Complex caller (8 calls)
+0x0013628C,thunk_FUN_0013457c,4,ctr,nn_snd,5_simple_wrapper,matched,Single function call wrapper / thunk
+0x00136290,func_00136290,136,ctr,nn_snd,7_complex_caller,asm_stub,Complex caller (11 calls)
 0x00136318,func_00136318,20,ctr,nn_snd,2_simple_accessor,matched,nn::dsp struct header initializer (magic 0xE7E3FFFF status 0)
 0x00136330,func_00136330,60,ctr,nn_snd,7_complex_caller,matched,nn::dsp child interface destructor and tagged pointer cleanup
 0x0013636C,func_0013636C,32,ctr,nn_snd,7_complex_caller,matched,Calls func_0012746C and passes local stack result to func_00146570
-0x0013638C,func_0013638C,144,ctr,nn_dsp,7_complex_caller,asm_stub,"Complex caller (5 calls, vtable)"
+0x0013638C,func_0013638C,144,ctr,nn_snd,7_complex_caller,asm_stub,"Complex caller (5 calls, vtable)"
 0x00136420,func_00136420,24,ctr,nn_snd,4_vtable_dispatch,matched,nn::dsp virtual method dispatch at vtable[12]
-0x00136438,func_00136438,264,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (5 calls)
-0x00136594,func_00136594,80,ctr,nn_dsp,4_complex_leaf,asm_stub,Large leaf algorithm with loop
-0x001365E4,func_001365E4,180,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (4 calls)
-0x0013669C,func_0013669C,224,ctr,nn_dsp,6_moderate_caller,asm_stub,Moderate caller (2 subcalls)
+0x00136438,func_00136438,264,ctr,nn_snd,7_complex_caller,asm_stub,Complex caller (5 calls)
+0x00136594,func_00136594,80,ctr,nn_snd,4_complex_leaf,asm_stub,Large leaf algorithm with loop
+0x001365E4,func_001365E4,180,ctr,nn_snd,7_complex_caller,asm_stub,Complex caller (4 calls)
+0x0013669C,func_0013669C,224,ctr,nn_snd,6_moderate_caller,asm_stub,Moderate caller (2 subcalls)
 0x00136780,func_00136780,16,ctr,nn_dsp,2_simple_accessor,matched,Sets value in thread-local storage (TLS) slot array
-0x00136790,func_00136790,108,ctr,nn_dsp,6_moderate_caller,asm_stub,Moderate caller (2 subcalls)
+0x00136790,func_00136790,108,ctr,nn_snd,6_moderate_caller,asm_stub,Moderate caller (2 subcalls)
 0x00136804,func_00136804,52,ctr,nn_snd,3_arithmetic_logic,matched,Clears channel bit in mask unk_00828E90
-0x00136838,func_00136838,216,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (4 calls)
-0x00136920,func_00136920,52,ctr,nn_dsp,6_moderate_caller,asm_stub,Moderate caller (3 subcalls)
-0x00136958,func_00136958,48,ctr,nn_dsp,6_moderate_caller,asm_stub,Moderate caller (3 subcalls)
-0x0013698C,func_0013698C,952,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (14 calls)
-0x00136D58,func_00136D58,360,ctr,nn_dsp,7_complex_caller,asm_stub,"Complex caller (30 calls, vtable)"
-0x00136EC4,func_00136EC4,256,ctr,nn_dsp,7_complex_caller,asm_stub,"Complex caller (18 calls, vtable)"
-0x00136FC4,func_00136FC4,60,ctr,nn_dsp,3_arithmetic_logic,asm_stub,Local arithmetic/bitwise computation
+0x00136838,func_00136838,216,ctr,nn_snd,7_complex_caller,asm_stub,Complex caller (4 calls)
+0x00136920,func_00136920,52,ctr,nn_snd,6_moderate_caller,asm_stub,Moderate caller (3 subcalls)
+0x00136958,func_00136958,48,ctr,nn_snd,6_moderate_caller,asm_stub,Moderate caller (3 subcalls)
+0x0013698C,func_0013698C,952,ctr,nn_snd,7_complex_caller,asm_stub,Complex caller (14 calls)
+0x00136D58,func_00136D58,360,ctr,nn_snd,7_complex_caller,asm_stub,"Complex caller (30 calls, vtable)"
+0x00136EC4,func_00136EC4,256,ctr,nn_snd,7_complex_caller,asm_stub,"Complex caller (18 calls, vtable)"
+0x00136FC4,func_00136FC4,60,ctr,nn_snd,3_arithmetic_logic,asm_stub,Local arithmetic/bitwise computation
 0x00137054,func_00137054,16,ctr,nn_dsp,2_simple_accessor,matched,nn::dsp global 32-bit state getter (0x00815DFC)
 0x00137064,func_00137064,156,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (8 calls)
 0x00137114,func_00137114,60,ctr,nn_dsp,6_moderate_caller,matched,Moderate caller (2 subcalls)
@@ -339,31 +339,31 @@ address,symbol,size,layer,subsystem,level,status,description
 0x00137524,func_00137524,108,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (6 calls)
 0x001375A4,func_001375A4,56,ctr,nn_dsp,6_moderate_caller,asm_stub,Moderate caller (2 subcalls)
 0x001375DC,func_001375DC,32,ctr,nn_snd,6_moderate_caller,matched,Cleanup subcomponent at +0x18 and decrement counter at +0x54
-0x001375FC,func_001375FC,160,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (6 calls)
-0x0013769C,func_0013769C,312,ctr,nn_dsp,4_complex_leaf,asm_stub,Large leaf algorithm with loop
-0x001377D8,func_001377D8,328,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (4 calls)
+0x001375FC,func_001375FC,160,ctr,nn_snd,7_complex_caller,asm_stub,Complex caller (6 calls)
+0x0013769C,func_0013769C,312,ctr,nn_snd,4_complex_leaf,asm_stub,Large leaf algorithm with loop
+0x001377D8,func_001377D8,328,ctr,nn_snd,7_complex_caller,asm_stub,Complex caller (4 calls)
 0x00137920,func_00137920,16,ctr,nn_snd,2_simple_accessor,matched,nn::dsp channel sub-descriptor 16-bit field exchange
 0x00137930,func_00137930,32,ctr,nn_snd,3_arithmetic_logic,matched,nn::dsp channel sub-descriptor bit 0 flag exchange
-0x00137950,func_00137950,284,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (13 calls)
+0x00137950,func_00137950,284,ctr,nn_snd,7_complex_caller,asm_stub,Complex caller (13 calls)
 0x00137A0C,func_00137A0C,16,ctr,nn_snd,2_simple_accessor,matched,nn::dsp channel sub-descriptor 8-bit signed state exchange
-0x00137A1C,func_00137A1C,88,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (4 calls)
-0x00137A7C,func_00137A7C,88,ctr,nn_dsp,4_complex_leaf,asm_stub,Large leaf algorithm
-0x00137AE0,func_00137AE0,140,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (8 calls)
-0x00137B7C,func_00137B7C,592,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (28 calls)
-0x00137DD0,func_00137DD0,72,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (4 calls)
-0x00137E20,func_00137E20,56,ctr,nn_dsp,3_arithmetic_logic,asm_stub,Local arithmetic/bitwise computation
-0x00137E60,func_00137E60,148,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (16 calls)
+0x00137A1C,func_00137A1C,88,ctr,nn_snd,7_complex_caller,asm_stub,Complex caller (4 calls)
+0x00137A7C,func_00137A7C,88,ctr,nn_snd,4_complex_leaf,asm_stub,Large leaf algorithm
+0x00137AE0,func_00137AE0,140,ctr,nn_snd,7_complex_caller,asm_stub,Complex caller (8 calls)
+0x00137B7C,func_00137B7C,592,ctr,nn_snd,7_complex_caller,asm_stub,Complex caller (28 calls)
+0x00137DD0,func_00137DD0,72,ctr,nn_snd,7_complex_caller,asm_stub,Complex caller (4 calls)
+0x00137E20,func_00137E20,56,ctr,nn_snd,3_arithmetic_logic,asm_stub,Local arithmetic/bitwise computation
+0x00137E60,func_00137E60,148,ctr,nn_snd,7_complex_caller,asm_stub,Complex caller (16 calls)
 0x00137F18,func_00137F18,16,ctr,nn_snd,5_simple_wrapper,matched,nn::dsp wrapper calling func_00147C74(&unk_0088A85C param)
 0x00137F28,func_00137F28,24,ctr,nn_snd,3_arithmetic_logic,community_matched,nn::dsp conditional pair setter
 0x00137F40,func_00137F40,28,ctr,nn_snd,3_arithmetic_logic,matched,nn::dsp audio buffer size calculation
-0x00137F5C,func_00137F5C,280,ctr,nn_dsp,4_complex_leaf,asm_stub,Large leaf algorithm
-0x0013808C,func_0013808C,100,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (12 calls)
+0x00137F5C,func_00137F5C,280,ctr,nn_snd,4_complex_leaf,asm_stub,Large leaf algorithm
+0x0013808C,func_0013808C,100,ctr,nn_snd,7_complex_caller,asm_stub,Complex caller (12 calls)
 0x0013810C,func_0013810C,24,ctr,nn_snd,3_arithmetic_logic,community_matched,nn::dsp conditional pair setter (+0x28)
-0x00138124,func_00138124,160,ctr,nn_dsp,4_complex_leaf,asm_stub,Large leaf algorithm
-0x001381D0,func_001381D0,368,ctr,nn_dsp,6_moderate_caller,asm_stub,Moderate caller (2 subcalls)
-0x00138344,func_00138344,16,ctr,nn_dsp,6_moderate_caller,asm_stub,Moderate caller (2 subcalls)
-0x00138354,func_00138354,264,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (16 calls)
-0x00138478,func_00138478,124,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (5 calls)
+0x00138124,func_00138124,160,ctr,nn_snd,4_complex_leaf,asm_stub,Large leaf algorithm
+0x001381D0,func_001381D0,368,ctr,nn_snd,6_moderate_caller,asm_stub,Moderate caller (2 subcalls)
+0x00138344,func_00138344,16,ctr,nn_snd,6_moderate_caller,asm_stub,Moderate caller (2 subcalls)
+0x00138354,func_00138354,264,ctr,nn_snd,7_complex_caller,asm_stub,Complex caller (16 calls)
+0x00138478,func_00138478,124,ctr,nn_snd,7_complex_caller,asm_stub,Complex caller (5 calls)
 0x001384AC,func_001384AC,56,ctr,nn_dsp,7_complex_caller,matched,nn::dsp conditional handle close (svc 0x23) and state flag reset on unk_00828EAD
 0x001384E8,func_001384E8,160,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (14 calls)
 0x00138590,func_00138590,64,ctr,nn_dsp,7_complex_caller,matched,nn::dsp handle query and replacement sequence via func_00148084 and svc 0x23

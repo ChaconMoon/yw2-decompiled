@@ -14,6 +14,18 @@
 extern "C" {
 
 /**
+ * @brief Jump thunk (trampoline) forwarding to func_0013457C.
+ * @address 0x0013628C
+ * @size 4 bytes
+ *
+ * @param[in] arg0 Context pointer passed directly to func_0013457C.
+ */
+void thunk_FUN_0013457c(void *arg0)
+{
+    func_0013457C(arg0);
+}
+
+/**
  * @brief Initializes a DSP channel header.
  * @address 0x00136318
  * @size 20 bytes

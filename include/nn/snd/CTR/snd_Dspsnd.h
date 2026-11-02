@@ -8,6 +8,7 @@
 extern "C" {
 #endif
 
+void thunk_FUN_0013457c(void *arg0);
 void func_00136318(DspHeader_00136318 *header);
 DspObject_00136318* func_00136330(DspObject_00136318 *self);
 void func_0013636C(void *arg0);

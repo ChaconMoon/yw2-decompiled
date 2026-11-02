@@ -166,7 +166,20 @@ def assign_target_unit(fn: dict) -> str:
     if subsys == "nn_applet":
         return "src/ctr/nn/applet/applet.cpp"
     if subsys == "nn_dsp":
-        return "src/ctr/nn/dsp/dsp.cpp"
+        vma = fn.get("address", 0)
+        dsp_driver_vmas = {
+            0x001384E8, 0x001385EC, 0x0013862C, 0x00138660, 0x00138688,
+            0x001387E4, 0x00138824, 0x00138858, 0x00138880, 0x001388EC,
+            0x001389F4, 0x00138A30, 0x00138A58, 0x00138AB8, 0x00138B64,
+            0x00138C30
+        }
+        if vma in dsp_driver_vmas:
+            return "src/ctr/nn/dsp/dsp_DSP.cpp"
+        elif 0x00138E24 <= vma <= 0x00138FEC:
+            return "src/ctr/nn/dsp/dsp_IirFilter.cpp"
+        return "src/ctr/nn/dsp/CTR_Api.cpp"
+    if subsys == "nn_snd":
+        return "src/ctr/nn/snd/snd_Dspsnd.cpp"
     if subsys == "nn_os":
         return "src/ctr/nn/os/os.cpp"
     if subsys == "nn_y2r":
