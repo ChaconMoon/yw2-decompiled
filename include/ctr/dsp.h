@@ -127,6 +127,7 @@ extern "C"
         DspObject_00136318* func_00136330(DspObject_00136318 *self); /* 0x00136330: cleans up child interface and returns self */
         void func_0013636C(void *arg0);                 /* 0x0013636C: captures return from func_0012746C and passes to func_00146570 */
         void func_00136420(DspInterface_00136420 *obj); /* 0x00136420: virtual method dispatch at vtable[12] */
+        void func_00136780(const u32 *pSlot, u32 value); /* 0x00136780: sets TLS slot value */
         DspChannel_00136804 *func_00136804(DspChannel_00136804 *obj); /* 0x00136804: clears channel bit in mask 0x00828E90 */
         void func_001375DC(DspComponent_001375DC *obj); /* 0x001375DC: decrements counter at +0x54 after sub-cleanup at +0x18 */
         u32 func_00137054(void);                        /* 0x00137054: returns unk_00815DFC */

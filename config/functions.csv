@@ -315,7 +315,7 @@ address,symbol,size,layer,subsystem,level,status,description
 0x00136594,func_00136594,80,ctr,nn_dsp,4_complex_leaf,asm_stub,Large leaf algorithm with loop
 0x001365E4,func_001365E4,180,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (4 calls)
 0x0013669C,func_0013669C,224,ctr,nn_dsp,6_moderate_caller,asm_stub,Moderate caller (2 subcalls)
-0x00136780,func_00136780,16,ctr,nn_dsp,2_simple_accessor,asm_stub,Single field getter/setter or global read
+0x00136780,func_00136780,16,ctr,nn_dsp,2_simple_accessor,matched,Sets value in thread-local storage (TLS) slot array
 0x00136790,func_00136790,108,ctr,nn_dsp,6_moderate_caller,asm_stub,Moderate caller (2 subcalls)
 0x00136804,func_00136804,52,ctr,nn_dsp,3_arithmetic_logic,matched,Clears channel bit in mask unk_00828E90
 0x00136838,func_00136838,216,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (4 calls)

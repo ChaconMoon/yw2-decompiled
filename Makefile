@@ -213,6 +213,16 @@ build/src/ctr/nn/dsp/func_00136420.o: src/ctr/nn/dsp/func_00136420.c
 		$(CC) $(CFLAGS) $< -o $@; \
 	fi
 
+build/src/ctr/nn/dsp/func_00136780.o: ARMFLAGS += -Otime
+build/src/ctr/nn/dsp/func_00136780.o: src/ctr/nn/dsp/func_00136780.c
+	@mkdir -p $(dir $@)
+	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
+		$(ARMCC) $(ARMFLAGS) $< -o $@; \
+	else \
+		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
+		$(CC) $(CFLAGS) $< -o $@; \
+	fi
+
 build/src/ctr/nn/dsp/func_00136804.o: ARMFLAGS := --cpu=mpcore -O2 -Otime --gnu -c -I . -I include
 build/src/ctr/nn/dsp/func_00136804.o: src/ctr/nn/dsp/func_00136804.c
 	@mkdir -p $(dir $@)
