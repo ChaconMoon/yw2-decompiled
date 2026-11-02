@@ -3,7 +3,7 @@
  * @brief Nintendo CTR-SDK dsp::DSP low-level IPC communication driver.
  *
  * Implements low-level IPC requests to the Nintendo 3DS dsp::DSP sysmodule.
- * Reference: ACNL decomp (lib/nn/src/nn/dsp/CTR/dsp_DSP.cpp)
+ * Reference: Nintendo 3DS CTR-SDK (nn/dsp/CTR/dsp_DSP.cpp)
  */
 
 #include "nn/dsp/CTR/dsp_DSP.h"

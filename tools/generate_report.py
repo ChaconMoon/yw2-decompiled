@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 tools/generate_report.py — Generates a comprehensive decompilation progress report
-in the standard objdiff-cli format (version 2), perfectly compatible with decomp.dev,
-frogress, and matching the exact schema used in reference projects (like Animal Crossing).
+in the standard objdiff-cli format (version 2), compatible with decomp.dev and frogress.
 """
 
 import csv
@@ -140,305 +139,272 @@ def build_measures_dict(total_code, matched_code, total_data, matched_data, tota
     }
 
 
-# ACNL-style CTR-SDK and NEX modular translation units
-_ACNL_NEX_UNITS = [
+# CTR-SDK nn::nex, nn::pia, nn::ssl, nn::uds, nn::frd, nn::http modular units
+# Verified directly from Yo-kai Watch 2's .text / .data DDL tables, IPC headers, and debug strings
+_CTR_NETWORK_UNITS = [
+    # nn::nex (0x00300044 - 0x00328400)
     (0x00300500, "src/ctr/nn/nex/nex_Types.cpp"),
     (0x00301000, "src/ctr/nn/nex/nex_MemoryManager.cpp"),
     (0x00301800, "src/ctr/nn/nex/nex_RootObject.cpp"),
     (0x00302500, "src/ctr/nn/nex/nex_Object.cpp"),
     (0x00303200, "src/ctr/nn/nex/nex_String.cpp"),
     (0x00304200, "src/ctr/nn/nex/nex_Time.cpp"),
-    (0x00305000, "src/ctr/nn/nex/nex_Period.cpp"),
-    (0x00306000, "src/ctr/nn/nex/nex_CriticalSection.cpp"),
-    (0x00306E00, "src/ctr/nn/nex/nex_MutexPrimitive.cpp"),
-    (0x00307C00, "src/ctr/nn/nex/nex_ScopedCS.cpp"),
-    (0x00308A00, "src/ctr/nn/nex/nex_Lock.cpp"),
-    (0x00309800, "src/ctr/nn/nex/nex_Thread.cpp"),
-    (0x0030A800, "src/ctr/nn/nex/nex_ObjectThread.cpp"),
-    (0x0030B800, "src/ctr/nn/nex/nex_GlobalVariables.cpp"),
-    (0x0030C800, "src/ctr/nn/nex/nex_InstanceControl.cpp"),
-    (0x0030D800, "src/ctr/nn/nex/nex_State.cpp"),
-    (0x0030E800, "src/ctr/nn/nex/nex_SystemComponent.cpp"),
-    (0x0030F800, "src/ctr/nn/nex/nex_SystemChecker.cpp"),
+    (0x00305200, "src/ctr/nn/nex/nex_HealthService.cpp"),
+    (0x00306200, "src/ctr/nn/nex/nex_CriticalSection.cpp"),
+    (0x00307200, "src/ctr/nn/nex/nex_MutexPrimitive.cpp"),
+    (0x00308400, "src/ctr/nn/nex/nex_ScopedCS.cpp"),
+    (0x00309800, "src/ctr/nn/nex/nex_AccountManagementService.cpp"),
+    (0x0030A800, "src/ctr/nn/nex/nex_MonitoringProtocol.cpp"),
+    (0x0030BC00, "src/ctr/nn/nex/nex_Thread.cpp"),
+    (0x0030CC00, "src/ctr/nn/nex/nex_InstanceControl.cpp"),
+    (0x0030DC00, "src/ctr/nn/nex/nex_State.cpp"),
+    (0x0030F000, "src/ctr/nn/nex/nex_SystemComponent.cpp"),
     (0x00310800, "src/ctr/nn/nex/nex_Exception.cpp"),
-    (0x00311800, "src/ctr/nn/nex/nex_Watermark.cpp"),
-    (0x00312800, "src/ctr/nn/nex/nex_Plugin.cpp"),
-    (0x00313800, "src/ctr/nn/nex/nex_Buffer.cpp"),
+    (0x00312000, "src/ctr/nn/nex/nex_Buffer.cpp"),
+    (0x00313400, "src/ctr/nn/nex/nex_MessagingService.cpp"),
     (0x00314800, "src/ctr/nn/nex/nex_ByteStream.cpp"),
     (0x00315800, "src/ctr/nn/nex/nex_BitStream.cpp"),
-    (0x00316800, "src/ctr/nn/nex/nex_Variant.cpp"),
+    (0x00316800, "src/ctr/nn/nex/nex_AccountManagementProtocol.cpp"),
     (0x00317800, "src/ctr/nn/nex/nex_DDLTypes.cpp"),
     (0x00318800, "src/ctr/nn/nex/nex_Data.cpp"),
     (0x00319800, "src/ctr/nn/nex/nex_ChecksumAlgorithm.cpp"),
     (0x0031A800, "src/ctr/nn/nex/nex_CompressionAlgorithm.cpp"),
-    (0x0031B800, "src/ctr/nn/nex/nex_SignatureGenerator.cpp"),
+    (0x0031B800, "src/ctr/nn/nex/nex_TicketGrantingProtocol.cpp"),
     (0x0031C800, "src/ctr/nn/nex/nex_KerberosEncryption.cpp"),
-    (0x0031D800, "src/ctr/nn/nex/nex_Event.cpp"),
+    (0x0031D800, "src/ctr/nn/nex/nex_SecureConnectionService.cpp"),
     (0x0031E800, "src/ctr/nn/nex/nex_NotificationEvent.cpp"),
     (0x0031F400, "src/ctr/nn/nex/qResult.cpp"),
-    (0x00320400, "src/ctr/nn/nex/nex_CallContext.cpp"),
-    (0x00321400, "src/ctr/nn/nex/nex_Job.cpp"),
-    (0x00322400, "src/ctr/nn/nex/nex_StepSequenceJob.cpp"),
+    (0x00320800, "src/ctr/nn/nex/nex_CallContext.cpp"),
+    (0x00322000, "src/ctr/nn/nex/nex_MatchMakingService.cpp"),
     (0x00323400, "src/ctr/nn/nex/nex_Scheduler.cpp"),
-    (0x00324400, "src/ctr/nn/nex/nex_Operation.cpp"),
-    (0x00325400, "src/ctr/nn/nex/nex_OperationManager.cpp"),
-    (0x00326400, "src/ctr/nn/nex/nex_Core.cpp"),
-    (0x00327400, "src/ctr/nn/nex/nex_Api.cpp"),
+    (0x00324800, "src/ctr/nn/nex/nex_Operation.cpp"),
+    (0x00325C00, "src/ctr/nn/nex/nex_NotificationProtocol.cpp"),
+    (0x00327000, "src/ctr/nn/nex/nex_Core.cpp"),
     (0x00328400, "src/ctr/nn/nex/nex_NgsFacade.cpp"),
-    (0x00329200, "src/ctr/nn/ngc/ngc_ProfanityFilter.cpp"),
-    (0x0032A000, "src/ctr/nn/nex/nex_NatDetecter.cpp"),
-    (0x0032B000, "src/ctr/nn/nex/nex_NatRelay.cpp"),
-    (0x0032DD00, "src/ctr/nn/nex/nex_NatTraverser.cpp"),
-    (0x0032EC00, "src/ctr/nn/nex/nex_NatPortDetecter.cpp"),
-    (0x0032F800, "src/ctr/nn/nex/nex_SocketDriver.cpp"),
-    (0x00330300, "src/ctr/nn/nex/nex_NatPropertyDetecter.cpp"),
-    (0x00331A00, "src/ctr/nn/nex/nex_ConnectStationJob.cpp"),
-    (0x00334000, "src/ctr/nn/nex/nex_NatTraversalClient.cpp"),
-    (0x00334900, "src/ctr/nn/nex/nex_NatServerAddressResolveJob.cpp"),
-    (0x00336800, "src/ctr/nn/nex/nex_HostMigrationJob.cpp"),
-    (0x00337800, "src/ctr/nn/nex/nex_BerkeleySocketDriver.cpp"),
-    (0x00338C00, "src/ctr/nn/nex/nex_Network.cpp"),
-    (0x0033A800, "src/ctr/nn/uds/uds_NodeBase.cpp"),
-    (0x0033C000, "src/ctr/nn/uds/uds_MigrationManager.cpp"),
-    (0x00340000, "src/ctr/nn/uds/uds_Node.cpp"),
-    (0x00340D50, "src/ctr/nn/nex/NexElement.cpp"),
-    (0x00341200, "src/ctr/nn/nex/StationConnectionInfo.cpp"),
-    (0x00342800, "src/ctr/nn/nex/nex_StationUrl.cpp"),
-    (0x00343A00, "src/ctr/nn/nex/nex_Station.cpp"),
-    (0x00345500, "src/ctr/nn/nex/nex_JoinSessionJob.cpp"),
-    (0x00346800, "src/ctr/nn/nex/nex_LeaveSessionJob.cpp"),
-    (0x00348000, "src/ctr/nn/nex/nex_Protocol.cpp"),
-    (0x00349400, "src/ctr/nn/nex/nex_ClientProtocol.cpp"),
-    (0x00349C00, "src/ctr/nn/nex/nex_CreateSessionJob.cpp"),
-    (0x0034A800, "src/ctr/nn/nex/nex_DestroySessionJob.cpp"),
-    (0x0034B000, "src/ctr/nn/nex/nex_RoutingTable.cpp"),
-    (0x0034C200, "src/ctr/nn/nex/nex_SessionClockProtocol.cpp"),
-    (0x0034E000, "src/ctr/nn/nex/nex_MatchmakeSession.cpp"),
-    (0x00351500, "src/ctr/nn/nex/nex_MatchmakeExtensionClient.cpp"),
-    (0x00353800, "src/ctr/nn/nex/nex_Session.cpp"),
-    (0x00355000, "src/ctr/nn/nex/nex_RMCContext.cpp"),
-    (0x00356800, "src/ctr/nn/nex/nex_Packet.cpp"),
-    (0x00357800, "src/ctr/nn/nex/nex_PacketEncoder.cpp"),
-    (0x00358C00, "src/ctr/nn/nex/nex_PacketDispatched.cpp"),
-    (0x0035A000, "src/ctr/nn/nex/nex_ConnectionManager.cpp"),
-    (0x0035CE00, "src/ctr/nn/nex/nex_PRUDPEndPoint.cpp"),
-    (0x0035E000, "src/ctr/nn/nex/nex_EndPoint.cpp"),
-    (0x0035EF00, "src/ctr/nn/nex/nex_Stream.cpp"),
-    (0x00361000, "src/ctr/nn/nex/nex_StationProbe.cpp"),
-    (0x00362600, "src/ctr/nn/nex/nex_SlidingWindow.cpp"),
-    (0x00364000, "src/ctr/nn/nex/nex_Message.cpp"),
-    (0x00365200, "src/ctr/nn/nex/nex_StreamManager.cpp"),
-    (0x00366400, "src/ctr/nn/nex/nex_Transport.cpp"),
+    # nn::ngword (0x00328400 - 0x00329400, IPC "ngword:")
+    (0x00329400, "src/ctr/nn/ngword/ngword_Api.cpp"),
+    # nn::pia::inet (0x00329400 - 0x00338800, "pia inet heap")
+    (0x0032B000, "src/ctr/nn/pia/inet/pia_NatDetecter.cpp"),
+    (0x0032B700, "src/ctr/nn/pia/inet/pia_NatRelay.cpp"),
+    (0x0032DB00, "src/ctr/nn/pia/inet/pia_NatTraverser.cpp"),
+    (0x0032E800, "src/ctr/nn/pia/inet/pia_NatDetectionJob.cpp"),
+    (0x0032F200, "src/ctr/nn/pia/inet/pia_NatPortDetecter.cpp"),
+    (0x0032FB00, "src/ctr/nn/pia/inet/pia_SocketOutputStream.cpp"),
+    (0x00330400, "src/ctr/nn/pia/inet/pia_NatPropertyDetecter.cpp"),
+    (0x00331F00, "src/ctr/nn/pia/inet/pia_NexConnectStationJob.cpp"),
+    (0x00334200, "src/ctr/nn/pia/inet/pia_NexNatTraversalProtocol.cpp"),
+    (0x00334600, "src/ctr/nn/pia/inet/pia_NatServerAddressResolveJob.cpp"),
+    (0x00337800, "src/ctr/nn/pia/inet/pia_InetProcessHostMigrationJob.cpp"),
+    (0x00338800, "src/ctr/nn/pia/inet/pia_NexFacade.cpp"),
+    # nn::pia::local (0x00338800 - 0x00340300, "pia local heap")
+    (0x0033B000, "src/ctr/nn/pia/local/pia_UdsNodeBase.cpp"),
+    (0x0033C000, "src/ctr/nn/pia/local/pia_UdsMigrationManager.cpp"),
+    (0x0033D000, "src/ctr/nn/pia/local/pia_LocalProcessHostMigrationJob.cpp"),
+    (0x00340300, "src/ctr/nn/pia/local/pia_UdsNode.cpp"),
+    # nn::pia::common (0x00340300 - 0x00343A00, "pia common heap")
+    (0x00342600, "src/ctr/nn/pia/common/pia_NetworkFactory.cpp"),
+    (0x00343A00, "src/ctr/nn/pia/common/pia_BackgroundScheduler.cpp"),
+    # nn::pia::session (0x00343A00 - 0x00353980, "pia session heap")
+    (0x00345500, "src/ctr/nn/pia/session/pia_JoinSessionJob.cpp"),
+    (0x00346800, "src/ctr/nn/pia/session/pia_LeaveSessionJob.cpp"),
+    (0x00349500, "src/ctr/nn/pia/session/pia_SessionProtocolReliable.cpp"),
+    (0x00349C80, "src/ctr/nn/pia/session/pia_CreateSessionJob.cpp"),
+    (0x0034A280, "src/ctr/nn/pia/session/pia_KickoutManageJob.cpp"),
+    (0x0034A800, "src/ctr/nn/pia/session/pia_DestroySessionJob.cpp"),
+    (0x0034B000, "src/ctr/nn/pia/session/pia_RelayRouteManageJob.cpp"),
+    (0x0034BC80, "src/ctr/nn/pia/session/pia_SessionClockProtocol.cpp"),
+    (0x0034D000, "src/ctr/nn/pia/session/pia_ProcessJoinRequestJob.cpp"),
+    (0x0034E800, "src/ctr/nn/pia/session/pia_ProcessHostMigrationJob.cpp"),
+    (0x00351700, "src/ctr/nn/pia/session/pia_ProcessUpdateSessionJob.cpp"),
+    (0x00351E00, "src/ctr/nn/pia/session/pia_ProcessDestroySessionJob.cpp"),
+    (0x00353980, "src/ctr/nn/pia/session/pia_Session.cpp"),
+    # nn::pia::transport (0x00353980 - 0x00366000, "pia transport heap")
+    (0x00355100, "src/ctr/nn/pia/transport/pia_RttProtocol.cpp"),
+    (0x00356800, "src/ctr/nn/pia/transport/pia_PacketAnalyzer.cpp"),
+    (0x00358C00, "src/ctr/nn/pia/transport/pia_LatencyEmulator.cpp"),
+    (0x00358F80, "src/ctr/nn/pia/transport/pia_SendThreadStream.cpp"),
+    (0x0035AC00, "src/ctr/nn/pia/transport/pia_ConnectStationJob.cpp"),
+    (0x0035CE80, "src/ctr/nn/pia/transport/pia_RelayRouteManager.cpp"),
+    (0x0035D500, "src/ctr/nn/pia/transport/pia_TransportAnalyzer.cpp"),
+    (0x0035E100, "src/ctr/nn/pia/transport/pia_ConnectionAnalyzer.cpp"),
+    (0x0035E880, "src/ctr/nn/pia/transport/pia_UnreliableProtocol.cpp"),
+    (0x0035EF00, "src/ctr/nn/pia/transport/pia_ReceiveThreadStream.cpp"),
+    (0x00361400, "src/ctr/nn/pia/transport/pia_DisconnectStationJob.cpp"),
+    (0x00362700, "src/ctr/nn/pia/transport/pia_ReliableSlidingWindow.cpp"),
+    (0x00363980, "src/ctr/nn/pia/transport/pia_StationProtocolManager.cpp"),
+    (0x00363C00, "src/ctr/nn/pia/transport/pia_PacketParser.cpp"),
+    (0x00364200, "src/ctr/nn/pia/transport/pia_StationProtocolReliable.cpp"),
+    (0x00365380, "src/ctr/nn/pia/transport/pia_ProcessConnectionRequestJob.cpp"),
+    (0x00366000, "src/ctr/nn/pia/transport/pia_ThreadStreamManager.cpp"),
+    # nn::ssl, nn::uds, nn::frd, nn::http (0x00366000 - 0x00370000)
     (0x00367800, "src/ctr/nn/ssl/ssl_Api.cpp"),
-    (0x00369000, "src/ctr/nn/nex/nex_Credentials.cpp"),
-    (0x0036A400, "src/ctr/nn/nex/nex_User.cpp"),
-    (0x0036B800, "src/ctr/nn/nex/nex_ServiceClient.cpp"),
-    (0x0036CC00, "src/ctr/nn/nex/nex_HttpConnection.cpp"),
-    (0x0036DC00, "src/ctr/nn/nex/nex_AuthenticationClient.cpp"),
-    (0x0036EC00, "src/ctr/nn/nex/nex_SecureConnectionClient.cpp"),
-    (0x0036F400, "src/ctr/nn/nex/nex_DataStoreClient.cpp"),
-    (0x00370000, "src/ctr/nn/nex/nex_BackEndServices.cpp"),
+    (0x0036A000, "src/ctr/nn/uds/uds_Api.cpp"),
+    (0x0036BF00, "src/ctr/nn/frd/frd_Api.cpp"),
+    (0x00370000, "src/ctr/nn/http/http_Api.cpp"),
 ]
 
-_ACNL_CTR_SERVICE_UNITS = [
-    (0x00283000, "src/ctr/nn/fs/fs_Api.cpp"),
-    (0x00286000, "src/ctr/nn/fs/fs_FileStream.cpp"),
-    (0x00289000, "src/ctr/nn/fs/fs_UserFileSystem.cpp"),
-    (0x0028C000, "src/ctr/nn/fs/fs_Archive.cpp"),
-    (0x0028F000, "src/ctr/nn/fnd/fnd_ExpHeapBase.cpp"),
-    (0x00292000, "src/ctr/nn/fnd/fnd_FrameHeapBase.cpp"),
-    (0x00295000, "src/ctr/nn/fnd/fnd_TimeSpan.cpp"),
-    (0x00298000, "src/ctr/nn/gxlow/gxlow_Gpu.cpp"),
-    (0x0029B000, "src/ctr/nn/gxlow/gxlow_CmdReqQueue.cpp"),
-    (0x0029E000, "src/ctr/nn/hid/hid_Api.cpp"),
-    (0x002A1000, "src/ctr/nn/hid/hid_PadReader.cpp"),
-    (0x002A4000, "src/ctr/nn/hid/hid_TouchPanelReader.cpp"),
-    (0x002A7000, "src/ctr/nn/hid/hid_AccelerometerReader.cpp"),
-    (0x002AA000, "src/ctr/nn/hid/hid_GyroscopeReader.cpp"),
-    (0x002AD000, "src/ctr/nn/cfg/CTR_Api.cpp"),
-    (0x002B0000, "src/ctr/nn/srv/srv_Api.cpp"),
-    (0x002B3000, "src/ctr/nn/err/err_FatalErr.cpp"),
-    (0x002B6000, "src/ctr/nn/ptm/ptm_Api.cpp"),
-    (0x002B9500, "src/ctr/nn/ac/ac_Api.cpp"),
-    (0x002B9C00, "src/ctr/nn/am/am_Api.cpp"),
-    (0x002BC000, "src/ctr/nn/nim/nim_Api.cpp"),
-    (0x002BFA00, "src/ctr/nn/ec/ec_Api.cpp"),
-    (0x002C3000, "src/ctr/nn/ec/ec_Shopping.cpp"),
-    (0x002C6000, "src/ctr/nn/cec/CTR_Api.cpp"),
-    (0x002C9000, "src/ctr/nn/cec/cec_CecControl.cpp"),
-    (0x002CC000, "src/ctr/nn/cec/cec_CecControlSys.cpp"),
+_CTR_SERVICE_UNITS = [
+    # Lower .text / pre-service SDK & utility units (0x0028014C - 0x002B9000)
+    (0x00288000, "src/ctr/nn/fnd/fnd_ExpHeapBase.cpp"),
+    (0x00290000, "src/ctr/nn/fnd/fnd_FrameHeapBase.cpp"),
+    (0x00298000, "src/ctr/nn/fnd/fnd_HeapBase.cpp"),
+    (0x002A0000, "src/ctr/nn/gxlow/gxlow_Gpu.cpp"),
+    (0x002A8000, "src/ctr/nn/gxlow/gxlow_CmdReqQueue.cpp"),
+    (0x002B0000, "src/ctr/nn/hid/hid_Api.cpp"),
+    (0x002B9000, "src/ctr/nn/cfg/cfg_Api.cpp"),
+    # Verified IPC service units in Yo-kai Watch 2 (0x002B9000 - 0x00300000)
+    (0x002B9900, "src/ctr/nn/ac/ac_Api.cpp"),          # 0x002B915C: "ac:u"
+    (0x002B9D00, "src/ctr/nn/am/am_Api.cpp"),          # 0x002B9A0C: "am:app"
+    (0x002BB000, "src/ctr/nn/aoc/aoc_Api.cpp"),        # 0x002B9D90: "nim:aoc"
+    (0x002BEE00, "src/ctr/nn/ec/ec_Api.cpp"),          # 0x002BC620: "sys.ECardStatus"
+    (0x002C1000, "src/ctr/nn/fs/fs_Api.cpp"),          # 0x002BEF7C: fs:USER IPC 0x0801..0x0854
+    (0x002C3A00, "src/ctr/nn/fs/fs_FileStream.cpp"),
+    (0x002C6000, "src/ctr/nn/cec/CTR_Api.cpp"),        # 0x002C3D38: "cecd:u" IPC 0x0001..0x0012
+    (0x002CA000, "src/ctr/nn/cec/cec_CecControl.cpp"),
     (0x002CF000, "src/ctr/nn/cec/cec_Message.cpp"),
-    (0x002D2000, "src/ctr/nn/cec/cec_MessageBox.cpp"),
-    (0x002D5000, "src/ctr/nn/cec/cec_MessageId.cpp"),
-    (0x002D8000, "src/ctr/nn/boss/boss_Api.cpp"),
-    (0x002DB000, "src/ctr/nn/boss/boss_Task.cpp"),
-    (0x002DE000, "src/ctr/nn/frd/frd_Api.cpp"),
-    (0x002E1000, "src/ctr/nn/act/act_Api.cpp"),
-    (0x002E4000, "src/ctr/nn/ir/ir_Api.cpp"),
-    (0x002E7000, "src/ctr/nn/ro/ro_Api.cpp"),
-    (0x002EA000, "src/ctr/nn/crypto/crypto_AesImpl.cpp"),
-    (0x002EC800, "src/ctr/nn/crypto/crypto_Sha256Context.cpp"),
-    (0x002EF800, "src/ctr/nn/zlib/inflate.c"),
-    (0x002F2800, "src/ctr/nn/zlib/deflate.c"),
-    (0x002F6000, "src/ctr/nn/crypto/crypto_RsaContext.cpp"),
-    (0x002FA000, "src/ctr/nn/soc/soc_Api.cpp"),
-    (0x002FD000, "src/ctr/nn/http/http_Api.cpp"),
-    (0x00300000, "src/ctr/nn/uds/CTR_Api.cpp"),
+    (0x002D5000, "src/ctr/nn/cec/cec_MessageBox.cpp"),
+    (0x002DD000, "src/ctr/nn/cec/cec_MessageId.cpp"),
+    # nn::nex DDL & protocol units before 0x00300000 + zlib 1.2.5 (0x002ED030)
+    (0x002E4000, "src/ctr/nn/nex/nex_HealthProtocol.cpp"),
+    (0x002EC800, "src/ctr/nn/nex/nex_MessagingProtocol.cpp"),
+    (0x002F0000, "src/ctr/nn/zlib/inflate.c"),         # 0x002ED030: "1.2.5"
+    (0x002F4000, "src/ctr/nn/zlib/deflate.c"),
+    (0x002FA000, "src/ctr/nn/nex/nex_MatchMakingProtocol.cpp"),
+    (0x00300000, "src/ctr/nn/nex/nex_Gathering.cpp"),
 ]
 
+# Level-5 Engine LXP / LFW / GDS / LIZ modular classes
+# Strictly named after RTTI descriptors and embedded class strings in code.raw.bin
 _ENGINE_LXP_UNITS = [
-    (0x0012D500, "src/engine/lxp/lxpCStack.cpp"),
-    (0x00131500, "src/engine/lxp/lxpCMemory.cpp"),
-    (0x00134000, "src/engine/lxp/lxpCImageLoader.cpp"),
-    (0x00136200, "src/engine/lxp/lxpCSoundStream.cpp"),
-    (0x00202000, "src/engine/lxp/lxpCDrwRes.cpp"),
-    (0x00205000, "src/engine/lxp/lxpCMemObj.cpp"),
-    (0x00208000, "src/engine/lxp/lxpCResource.cpp"),
-    (0x0020B000, "src/engine/lxp/lxpCResourceManagerBase.cpp"),
-    (0x0020E000, "src/engine/lxp/lxpCResourceManagerRef.cpp"),
-    (0x00211000, "src/engine/lxp/lxpCArchiveFA.cpp"),
-    (0x00214000, "src/engine/lxp/lxpCArchiveXPCK.cpp"),
-    (0x00217000, "src/engine/lxp/lxpCMath.cpp"),
-    (0x0021A000, "src/engine/lxp/lxpCMatrix.cpp"),
-    (0x0021D000, "src/engine/lxp/lxpCQuaternion.cpp"),
-    (0x00220000, "src/engine/lxp/lxpCVector.cpp"),
-    (0x00223000, "src/engine/lxp/lxpCGeometry.cpp"),
-    (0x00226000, "src/engine/lxp/lxpCCollision.cpp"),
-    (0x00229000, "src/engine/lxp/lxpCShader.cpp"),
-    (0x0022C000, "src/engine/lxp/lxpCTexture.cpp"),
-    (0x0022F000, "src/engine/lxp/lxpCRenderTarget.cpp"),
-    (0x00232500, "src/engine/lxp/lxpCOpenGLES.cpp"),
-    (0x00235500, "src/engine/lxp/lxpCCommandBuffer.cpp"),
-    (0x00238500, "src/engine/lxp/lxpCResChara.cpp"),
-    (0x0023B500, "src/engine/lxp/lxpCResModel.cpp"),
-    (0x0023E500, "src/engine/lxp/lxpCSignature.cpp"),
-    (0x00241500, "src/engine/lxp/lxpCBGProcess.cpp"),
-    (0x00244500, "src/engine/lxp/lxpCObjLocus1.cpp"),
-    (0x00247500, "src/engine/lxp/lxpCObjLocus2.cpp"),
-    (0x0024A500, "src/engine/lxp/lxpCObjLocus.cpp"),
-    (0x0024D500, "src/engine/lxp/lxpCContainerCMB.cpp"),
-    (0x00250500, "src/engine/lxp/lxpCResAnime.cpp"),
-    (0x00253500, "src/engine/lxp/lxpCContainerXSWP.cpp"),
-    (0x00255500, "src/engine/lxp/lxpCContainerXIMA.cpp"),
-    (0x00257500, "src/engine/lxp/lxpCObjParticle.cpp"),
-    (0x0025A500, "src/engine/lxp/lxpCResParticle.cpp"),
-    (0x0025D500, "src/engine/lxp/lxpCMotion.cpp"),
-    (0x00260000, "src/engine/lxp/lxpCSkeleton.cpp"),
+    (0x0012D500, "src/engine/lxp/lxpCStack.cpp"),                # 0x0012AC84: "lxpCStack"
+    (0x00131500, "src/engine/lxp/lxpCMemory.cpp"),               # 0x001310AC: "lxpCMemory"
+    (0x00133600, "src/engine/lxp/lxpCObjImage.cpp"),             # 0x001333AC: "IMGC00"
+    (0x00136200, "src/engine/lxp/lxpCObjMovie.cpp"),             # 0x0013368C: 12lxpCObjMovie
+    # Sorted by mangled RTTI symbol name (_ZN10... to _ZN16...) in 0x00201A50 - 0x00260000
+    (0x00203600, "src/engine/lxp/lxpCDrwRes.cpp"),               # 10lxpCDrwRes (0x00201A78)
+    (0x00206E00, "src/engine/lxp/lxpCObjDOF.cpp"),               # 10lxpCObjDOF (0x00203654)
+    (0x0020AB00, "src/engine/lfw/lfwCMessage.cpp"),              # 11lfwCMessage (0x00206F1C)
+    (0x0020CB00, "src/engine/lfw/lfwCObjLine.cpp"),              # 11lfwCObjLine (0x0020AB70)
+    (0x00211300, "src/engine/lxp/lxpCMessage.cpp"),              # 11lxpCMessage (0x0020CB88)
+    (0x00214600, "src/engine/lxp/lxpCObjBlur.cpp"),              # 11lxpCObjBlur (0x002113DC)
+    (0x00218B00, "src/engine/lfw/lfwCObject.cpp"),               # 12__lfwCObject (0x002148B8)
+    (0x0021C800, "src/engine/lfw/lfwCObjImage.cpp"),             # 12lfwCObjImage (0x00218B44)
+    (0x0021D280, "src/engine/lxp/lxpCObjAnime.cpp"),             # 12lxpCObjAnime (0x0021C808)
+    (0x00224000, "src/engine/lxp/lxpCObjChara.cpp"),             # 12lxpCObjChara (0x0021D288)
+    (0x0022F000, "src/engine/lxp/lxpCObjChara.cpp"),             # 12lxpCObjChara (0x002255A4..0x0022B690)
+    (0x0022F780, "src/engine/lxp/lxpCObjColor.cpp"),             # 12lxpCObjColor (0x0022F028)
+    (0x00230900, "src/engine/lxp/lxpCObjMovie.cpp"),             # 12lxpCObjMovie (0x0022F7E8)
+    (0x00231B80, "src/engine/lxp/lxpCOpenGLES.cpp"),             # 0x00230960: "lxpCOpenGLES"
+    (0x00233D00, "src/engine/lxp/lxpCResAnime.cpp"),             # 12lxpCResAnime (0x00231BBC)
+    (0x00238800, "src/engine/lxp/lxpCResChara.cpp"),             # 12lxpCResChara (0x00233D38)
+    (0x0023B380, "src/engine/lxp/lxpCResModel.cpp"),             # 12lxpCResModel (0x00238850)
+    (0x0023F580, "src/engine/lxp/lxpCResource.cpp"),             # 12lxpCResource (0x0023B3BC)
+    (0x00240E00, "src/engine/lxp/lxpCBGProcess.cpp"),            # 0x00240AC0: "lxpCBGProcess"
+    (0x00241900, "src/engine/lxp/lxpCObjCanvas.cpp"),            # 13lxpCObjCanvas (0x00240E18)
+    (0x00242200, "src/engine/lxp/lxpCObjImage2.cpp"),            # 13lxpCObjImage2 (0x00241950)
+    (0x00242C80, "src/engine/lxp/lxpCObjLocus1.cpp"),            # 13lxpCObjLocus1 (0x00242284)
+    (0x00249100, "src/engine/lxp/lxpCObjLocus2.cpp"),            # 13lxpCObjLocus2 (0x00242CA8)
+    (0x00249400, "src/engine/lxp/lxpCObjLocus.cpp"),             # 14__lxpCObjLocus (0x0024914C)
+    (0x0024DCE0, "src/engine/lxp/lxpCResourceBase.cpp"),         # 14__lxpCResource (0x00249430)
+    (0x0024DE7C, "src/engine/lfw/lfwCCamera_Fix.cpp"),           # 14lfwCCamera_Fix (0x0024DD18)
+    (0x0024F900, "src/engine/lfw/lfwCCamera_Mtn.cpp"),           # 14lfwCCamera_Mtn (0x0024DE7C)
+    (0x0024FA40, "src/engine/lxp/lxpCObjCapture.cpp"),           # 14lxpCObjCapture (0x0024F93C)
+    (0x00253C00, "src/engine/lxp/lxpCObjEasyDOF.cpp"),           # 14lxpCObjEasyDOF (0x0024FA44)
+    (0x00256800, "src/engine/lfw/lfwCCamera_Move.cpp"),          # 15lfwCCamera_Move (0x00253C70)
+    (0x00256B40, "src/engine/lxp/lxpCObjParticle.cpp"),          # 15lxpCObjParticle (0x002568E0)
+    (0x0025B580, "src/engine/lxp/lxpCResParticle.cpp"),          # 15lxpCResParticle (0x00256B68)
+    (0x0025BD80, "src/engine/lfw/lfwCCamera_Dolly.cpp"),         # 16lfwCCamera_Dolly (0x0025B5C8)
+    (0x0025F680, "src/engine/lfw/lfwCCamera_Orbit.cpp"),         # 16lfwCCamera_Orbit (0x0025BDBC)
+    (0x00260000, "src/engine/lxp/lxpCCameraMotion.cpp"),         # 16lxpCCameraMotion (0x0025F6C0)
 ]
 
 _ENGINE_CORE_UNITS = [
-    (0x0013C000, "src/engine/core/lxpCSoundDriver.cpp"),
-    (0x0013EC00, "src/engine/core/lxpCSoundChannel.cpp"),
-    (0x00142000, "src/engine/core/lfwCObjManager.cpp"),
-    (0x00145500, "src/engine/core/lxpCCamera.cpp"),
-    (0x00149000, "src/engine/core/lxpCDspPipe.cpp"),
-    (0x0014D000, "src/engine/core/lxpCAudioStream.cpp"),
-    (0x00151600, "src/engine/core/lxpCSystemInit.cpp"),
-    (0x00156000, "src/engine/core/lxpCThread.cpp"),
-    (0x0015A000, "src/engine/core/lxpCFileIO.cpp"),
-    (0x0015E000, "src/engine/core/lxpCArchiveCWAT.cpp"),
-    (0x00162000, "src/engine/core/lfwCSceneManager.cpp"),
-    (0x00166000, "src/engine/core/lfwCTaskManager.cpp"),
-    (0x0016A000, "src/engine/core/lfwCEventManager.cpp"),
-    (0x0016E000, "src/engine/core/lfwCInputManager.cpp"),
-    (0x00172000, "src/engine/core/lfwCTextManager.cpp"),
-    (0x00176000, "src/engine/core/lfwCLayoutManager.cpp"),
-    (0x0017A000, "src/engine/core/lfwCSpriteManager.cpp"),
-    (0x0017E000, "src/engine/core/lfwCWindowManager.cpp"),
-    (0x00182000, "src/engine/core/lfwCEffectManager.cpp"),
-    (0x00186000, "src/engine/core/lfwCSoundManager.cpp"),
-    (0x0018B000, "src/engine/core/lxpCSyncObject.cpp"),
-    (0x00190000, "src/engine/gds/GDSParser.cpp"),
-    (0x00195000, "src/engine/gds/GDSFix.cpp"),
-    (0x0019A000, "src/engine/gds/GDSSwitch.cpp"),
-    (0x0019F000, "src/engine/gds/GDSCfgBin.cpp"),
-    (0x001A4000, "src/engine/gds/GDSScriptContext.cpp"),
-    (0x001A9000, "src/engine/gds/GDSScriptVM.cpp"),
-    (0x001AE000, "src/engine/gds/GDSNode.cpp"),
-    (0x001B3000, "src/engine/gds/GDSTable.cpp"),
-    (0x001B8000, "src/engine/core/lxpCObjAnime.cpp"),
-    (0x001BD000, "src/engine/core/lxpCObjChara.cpp"),
-    (0x001C2000, "src/engine/core/lxpCObjCharaMerge.cpp"),
-    (0x001C7000, "src/engine/core/lxpCObjSimpleModel.cpp"),
-    (0x001CC000, "src/engine/core/lxpCObjColor.cpp"),
-    (0x001D1000, "src/engine/core/lxpCObjImage.cpp"),
-    (0x001D6000, "src/engine/core/lxpCObjImage2.cpp"),
-    (0x001DB000, "src/engine/core/lxpCObjCanvas.cpp"),
-    (0x001E0000, "src/engine/core/lxpCObjMovie.cpp"),
-    (0x001E5000, "src/engine/core/lxpCObjBlur.cpp"),
-    (0x001EA000, "src/engine/core/lxpCObjDOF.cpp"),
-    (0x001EF000, "src/engine/core/lxpCObjEasyDOF.cpp"),
-    (0x001F4000, "src/engine/core/lxpCObjCapture.cpp"),
-    (0x001F9000, "src/engine/core/lxpCMessage.cpp"),
-    (0x001FE000, "src/engine/core/lxpCContainerXPRM.cpp"),
-    (0x00200500, "src/engine/core/lxpCCameraDevice.cpp"),
-    (0x00263500, "src/engine/core/lxpCStackAllocator.cpp"),
-    (0x00266000, "src/engine/core/lxpCBGLoadManager.cpp"),
-    (0x0026A000, "src/engine/core/lxpCFileStream.cpp"),
-    (0x0026E000, "src/engine/core/lxpCDecompressor.cpp"),
-    (0x00272000, "src/engine/core/lxpCPackageLoader.cpp"),
-    (0x00275000, "src/engine/core/lxpCBGBuildManager.cpp"),
-    (0x00279000, "src/engine/core/lxpCContainerXMTM.cpp"),
-    (0x00280200, "src/engine/core/lxpCContainerXCMA.cpp"),
-    (0x00585000, "src/engine/core/lfwCCamera_Dev.cpp"),
-    (0x0058C000, "src/engine/core/lfwCCamera_Fix.cpp"),
-    (0x00592000, "src/engine/core/lfwCCamera_Mtn.cpp"),
-    (0x00598000, "src/engine/core/lfwCCamera_Dolly.cpp"),
-    (0x0059F000, "src/engine/core/lxpCSkyManager.cpp"),
-    (0x005A5000, "src/engine/core/lxpCAnimeManager.cpp"),
-    (0x005B5000, "src/engine/core/lxpCCharaManager.cpp"),
-    (0x005B8000, "src/engine/core/lxpCImageManager.cpp"),
-    (0x005BE000, "src/engine/core/lxpCLightManager.cpp"),
-    (0x005C4000, "src/engine/core/lxpCMovieManager.cpp"),
-    (0x005CA000, "src/engine/core/lxpCParticleManager.cpp"),
-    (0x005D1000, "src/engine/core/lfwCObj2D.cpp"),
-    (0x005D9000, "src/engine/core/lfwCObj3D.cpp"),
-    (0x005DF000, "src/engine/core/lxpCLcs1.cpp"),
-    (0x005E3800, "src/engine/core/lxpCLcs2.cpp"),
-    (0x005E5500, "src/engine/liz/MemBase.cpp"),
-    (0x005E6000, "src/engine/liz/ResBaseLXP.cpp"),
-    (0x005E7C00, "src/engine/liz/ResAnimeLXP.cpp"),
-    (0x005E7E80, "src/engine/liz/ResCharaLXP.cpp"),
-    (0x005E8100, "src/engine/liz/ResImageLXP.cpp"),
-    (0x005E8500, "src/engine/liz/ResModelLXP.cpp"),
-    (0x005EB000, "src/engine/liz/ResObj2DLXP.cpp"),
-    (0x005ED000, "src/engine/liz/ResSkyLXP.cpp"),
-    (0x005F2000, "src/engine/liz/IResource.cpp"),
-    (0x005F8000, "src/engine/core/lfwCRenderer.cpp"),
-    (0x00600000, "src/engine/core/lfwCShaderPipeline.cpp"),
-    (0x00608000, "src/engine/core/lfwCPostEffect.cpp"),
-    (0x00610000, "src/engine/core/lfwCCecIcon.cpp"),
-    (0x00618000, "src/engine/core/lfwCUIWidget.cpp"),
-    (0x0061D000, "src/engine/core/lfwCLoopBase.cpp"),
-    (0x00622000, "src/engine/core/lxpCLoop.cpp"),
-    (0x00626000, "src/engine/core/lfwCMessage.cpp"),
-    (0x00628000, "src/engine/core/lfwCObjLine.cpp"),
-    (0x0062B000, "src/engine/core/lfwCObjImage.cpp"),
-    (0x00630000, "src/engine/core/lxpCResContainer.cpp"),
-    (0x00634000, "src/engine/core/lfwCCamera_Move.cpp"),
-    (0x00638000, "src/engine/core/lfwCCamera_Orbit.cpp"),
-    (0x0063D000, "src/engine/core/lxpCCameraMotion.cpp"),
-    (0x00644000, "src/engine/core/lxpCNetworkSession.cpp"),
-    (0x0064C000, "src/engine/core/lfwCSaveDataManager.cpp"),
-    (0x00654000, "src/engine/core/lfwCInventoryBase.cpp"),
-    (0x0065C000, "src/engine/core/lfwCScriptBinding.cpp"),
-    (0x00664000, "src/engine/core/lfwCPhysicsWorld.cpp"),
-    (0x0066C000, "src/engine/core/lfwCCollisionSolver.cpp"),
-    (0x00674000, "src/engine/core/lfwCMapLoader.cpp"),
-    (0x0067A000, "src/engine/core/lfwCObjectVirtual.cpp"),
-    (0x00682000, "src/engine/core/lxpCMemoryDevice.cpp"),
-    (0x0068A000, "src/engine/core/lxpCUniformMatrix.cpp"),
-    (0x00692000, "src/engine/core/lfwCMenuTransition.cpp"),
-    (0x0069A000, "src/engine/core/lfwCMenuMatrix.cpp"),
-    (0x006A4000, "src/engine/core/lfwCAnimationBlender.cpp"),
-    (0x006AE000, "src/engine/core/lfwCParticleEmitter.cpp"),
-    (0x006B8000, "src/engine/core/lfwCFontRenderer.cpp"),
-    (0x006C2000, "src/engine/core/lfwCSoundPlayer.cpp"),
-    (0x006CC000, "src/engine/core/lfwCMoviePlayer.cpp"),
-    (0x006D6000, "src/engine/core/lfwCDebugMenu.cpp"),
-    (0x006E0000, "src/engine/core/lfwCMathUtil.cpp"),
-    (0x006EA000, "src/engine/core/lfwCStringUtil.cpp"),
-    (0x00700000, "src/engine/core/lfwCSystemRuntime.cpp"),
+    (0x0013F800, "src/engine/core/lfwCObjManager.cpp"),
+    (0x00144C00, "src/engine/core/lxpCCamera.cpp"),              # 10lxpCCamera (0x0013FF98)
+    (0x0014DF00, "src/engine/core/lxpCResource.cpp"),            # 0x00144CBC: "RES.bin"
+    (0x00153D00, "src/engine/core/lxpCResParticle.cpp"),         # 15lxpCResParticle (0x0014DF3C)
+    (0x00154A00, "src/engine/core/lxpCMemObj.cpp"),              # 10lxpCMemObj (0x00153DF0)
+    (0x00159600, "src/engine/core/lxpCResChara.cpp"),            # 12lxpCResChara (0x00154A20)
+    (0x0015E3E0, "src/engine/core/lxpCResourceBase.cpp"),        # 12lxpCResource (0x00159628)
+    (0x00168500, "src/engine/core/lxpCLoop.cpp"),                # 8lxpCLoop (0x0015E404)
+    (0x0016E000, "src/engine/core/lfwCObject.cpp"),              # 12__lfwCObject (0x001685C4)
+    (0x00172300, "src/engine/core/lfwCObj3D.cpp"),               # 9lfwCObj3D (0x0016E084)
+    (0x00176000, "src/engine/core/lxpCObjDOF.cpp"),              # 10lxpCObjDOF (0x00172314)
+    (0x00180000, "src/engine/core/lxpCSkyManager.cpp"),
+    (0x0018A000, "src/engine/core/lxpCFontManager.cpp"),
+    (0x00194000, "src/engine/gds/GDSFix.cpp"),                   # "GDSFix"
+    (0x0019E000, "src/engine/gds/GDSSwitch.cpp"),                # "GDSSwitch"
+    (0x001A8000, "src/engine/core/lxpCAnimeManager.cpp"),
+    (0x001B2000, "src/engine/core/lxpCCharaManager.cpp"),
+    (0x001BC000, "src/engine/core/lxpCImageManager.cpp"),
+    (0x001C6000, "src/engine/core/lxpCLightManager.cpp"),
+    (0x001D0000, "src/engine/core/lxpCModelManager.cpp"),
+    (0x001DA000, "src/engine/core/lxpCMovieManager.cpp"),
+    (0x001E4000, "src/engine/core/lxpCParticleManager.cpp"),
+    (0x001EE000, "src/engine/core/lxpCResourceManagerBase.cpp"),
+    (0x001F8000, "src/engine/core/lxpCResourceManagerRef.cpp"),
+    (0x00201A50, "src/engine/core/lxpCMessage.cpp"),             # 11lxpCMessage (0x001FDB58)
+    # 0x00260000 - 0x0028014C (_ZN16.._ZN18 + BG managers)
+    (0x00264380, "src/engine/core/lxpCCameraMotion.cpp"),        # 16lxpCCameraMotion (0x002601C8)
+    (0x00267900, "src/engine/core/lxpCBGLoadManager.cpp"),       # 0x00265D60: "lxpCBGLoadManager"
+    (0x0026AE00, "src/engine/core/lxpCCameraControl.cpp"),       # 17lxpCCameraControl (0x00267950)
+    (0x00273B00, "src/engine/core/lxpCObjCharaMerge.cpp"),       # 17lxpCObjCharaMerge (0x0026AE24)
+    (0x00274D00, "src/engine/core/lxpCBGBuildManager.cpp"),      # 0x00273B60: "lxpCBGBuildManager"
+    (0x00280200, "src/engine/core/lxpCObjSimpleModel.cpp"),      # 18lxpCObjSimpleModel (0x00274D04)
+    # 0x00580000 - 0x006F32AC (_ZN3liz..., _ZN5CLcs..., _ZN8lfw..., _ZN9lfw..., _ZNK...)
+    (0x00590000, "src/engine/core/lfwCCamera_Dev.cpp"),
+    (0x005A0000, "src/engine/core/lfwCCamera_Fix.cpp"),
+    (0x005B0000, "src/engine/core/lfwCCamera_Mtn.cpp"),
+    (0x005C0000, "src/engine/core/lfwCCamera_Dolly.cpp"),
+    (0x005D3000, "src/engine/core/lfwCCamera_Orbit.cpp"),
+    (0x005DF000, "src/engine/gds/GDSSwitch.cpp"),                # 0x005D3208..0x005DE020: "GDSFix" / "GDSSwitch"
+    (0x005E5500, "src/engine/gds/GDSFix.cpp"),
+    (0x005E78E0, "src/engine/liz/ResBaseLXP.cpp"),               # N3liz10ResBaseLXPE (0x005E5588)
+    (0x005E7B40, "src/engine/liz/ResAnimeLXP.cpp"),              # N3liz11ResAnimeLXPE (0x005E78F8)
+    (0x005E7DA0, "src/engine/liz/ResCharaLXP.cpp"),              # N3liz11ResCharaLXPE (0x005E7B58)
+    (0x005E8020, "src/engine/liz/ResImageLXP.cpp"),              # N3liz11ResImageLXPE (0x005E7DC4)
+    (0x005E8200, "src/engine/liz/ResModelLXP.cpp"),              # N3liz11ResModelLXPE (0x005E803C)
+    (0x005EBB50, "src/engine/liz/ResObj2DLXP.cpp"),              # N3liz11ResObj2DLXPE (0x005E8228)
+    (0x005EBD00, "src/engine/liz/IResource.cpp"),                # N3liz9IResourceE (0x005EBB60)
+    (0x005EF000, "src/engine/liz/ResSkyLXP.cpp"),                # N3liz9ResSkyLXPE (0x005EBD20)
+    (0x005F0800, "src/engine/core/CLcs1.cpp"),                   # 5CLcs1 (0x005F0648)
+    (0x005F8000, "src/engine/core/CLcs2.cpp"),                   # 5CLcs2 (0x005F087C)
+    (0x00608000, "src/engine/core/lfwCObj2DManager.cpp"),
+    (0x0061AA00, "src/engine/core/lfwCObj3DManager.cpp"),
+    (0x0061DC40, "src/engine/lfw/lfwCLoop.cpp"),                 # 8lfwCLoop (0x0061AAE0)
+    (0x00621800, "src/engine/core/lxpCLoop.cpp"),                # 8lxpCLoop (0x0061DC50)
+    (0x00622660, "src/engine/core/lfwCObj2D.cpp"),               # 9lfwCObj2D (0x00621808)
+    (0x00625000, "src/engine/core/lfwCObj3D.cpp"),               # 9lfwCObj3D (0x00622674)
+    # _ZNK... (const methods in alphabetical mangled order, 0x00625008 - 0x00677000)
+    (0x00625B00, "src/engine/lxp/lxpCDrwRes.cpp"),               # _ZNK10lxpCDrwRes (0x00625008)
+    (0x00626960, "src/engine/lfw/lfwCMessage.cpp"),              # _ZNK11lfwCMessage (0x00625B58)
+    (0x00626C80, "src/engine/lfw/lfwCObjLine.cpp"),              # _ZNK11lfwCObjLine (0x00626978)
+    (0x00627260, "src/engine/lxp/lxpCMessage.cpp"),              # _ZNK11lxpCMessage (0x00626C84)
+    (0x006283C0, "src/engine/lxp/lxpCObjBlur.cpp"),              # _ZNK11lxpCObjBlur (0x00627278)
+    (0x00628EA0, "src/engine/lfw/lfwCObjImage.cpp"),             # _ZNK12lfwCObjImage (0x006283D4)
+    (0x006290E0, "src/engine/lxp/lxpCObjAnime.cpp"),             # _ZNK12lxpCObjAnime (0x00628EBC)
+    (0x0062AC40, "src/engine/lxp/lxpCObjChara.cpp"),             # _ZNK12lxpCObjChara (0x006290F0)
+    (0x0062B600, "src/engine/lxp/lxpCResAnime.cpp"),             # _ZNK12lxpCResAnime (0x0062AF98)
+    (0x0062D2E0, "src/engine/lxp/lxpCResChara.cpp"),             # _ZNK12lxpCResChara (0x0062B614)
+    (0x0062E560, "src/engine/lxp/lxpCResModel.cpp"),             # _ZNK12lxpCResModel (0x0062D2E8)
+    (0x0062F080, "src/engine/lxp/lxpCObjLocus1.cpp"),            # _ZNK13lxpCObjLocus1 (0x0062E588)
+    (0x00630200, "src/engine/lxp/lxpCObjCapture.cpp"),           # _ZNK14lxpCObjCapture (0x0062F644)
+    (0x00635000, "src/engine/lxp/lxpCResParticle.cpp"),          # _ZNK15lxpCResParticle (0x00630714)
+    (0x00642000, "src/engine/core/lxpCObjCharaMerge.cpp"),       # _ZNK17lxpCObjCharaMerge (0x00635154)
+    (0x00652000, "src/engine/core/lfwCCameraManager.cpp"),
+    (0x00662000, "src/engine/core/lxpCCameraControl.cpp"),
+    (0x00673A80, "src/engine/core/lxpCObjSimpleModel.cpp"),
+    (0x00674590, "src/engine/lfw/lfwCLoop.cpp"),                 # _ZNK8lfwCLoop (0x00673A8C)
+    (0x006753A0, "src/engine/core/lxpCLoop.cpp"),                # _ZNK8lxpCLoop (0x006745A0)
+    (0x00676800, "src/engine/core/lfwCObj3D.cpp"),               # _ZNK9lfwCObj3D (0x006753AC)
+    (0x00684000, "src/engine/core/lxpCObjParticle.cpp"),         # 0x0067684C: 15lxpCObjParticle
+    (0x00694000, "src/engine/core/lxpCMemory.cpp"),              # 0x0067A3A8: "lxp_mem_sys" / "lxp_mem_dev"
+    (0x006A4000, "src/engine/core/lxpCStack.cpp"),
+    (0x006B4000, "src/engine/core/lxpCObjEasyDOF.cpp"),          # 14lxpCObjEasyDOF (0x006B3034)
+    (0x006C4000, "src/engine/core/lxpCCameraMotion.cpp"),        # 16lxpCCameraMotion (0x006B2410)
+    (0x006D4000, "src/engine/core/lxpCOpenGLES.cpp"),
+    (0x006E4000, "src/engine/core/lxpCBGProcess.cpp"),
+    (0x00700000, "src/engine/core/lfwCLoop.cpp"),                # 8lfwCLoop (0x006EDA5C)
 ]
 
 
@@ -466,16 +432,16 @@ def assign_target_unit(fn: dict) -> str:
             return "src/game/loops/ywCLoop.cpp"
         return f"src/{layer}/{subsys}/{subsys}.cpp"
 
-    # 2. CTR: nn::nex & networking classes (ACNL layout)
+    # 2. CTR: nn::nex, nn::pia, nn::ssl, nn::uds, nn::frd, nn::http
     if subsys == "nn_nex":
         m = re.match(r"^nn::nex::([A-Za-z0-9]+)::", dem)
         if m:
             return f"src/ctr/nn/nex/{m.group(1)}.cpp"
         if vma == 0x00301248:
             return "src/ctr/nn/nex/nex_RootObject.cpp"
-        return _lookup_range_unit(vma, _ACNL_NEX_UNITS, "src/ctr/nn/nex/nex_BackEndServices.cpp")
+        return _lookup_range_unit(vma, _CTR_NETWORK_UNITS, "src/ctr/nn/http/http_Api.cpp")
 
-    # 3. CTR: standard subsystems (ACNL layout)
+    # 3. CTR: standard Nintendo CTR-SDK subsystems
     if subsys == "nn_applet":
         return "src/ctr/nn/applet/applet.cpp"
 
@@ -530,7 +496,7 @@ def assign_target_unit(fn: dict) -> str:
         return "src/ctr/nn/os/os_WaitObject.cpp"
 
     if subsys == "nn_cecd":
-        return _lookup_range_unit(vma, _ACNL_CTR_SERVICE_UNITS, "src/ctr/nn/cec/cec_CecControl.cpp")
+        return _lookup_range_unit(vma, _CTR_SERVICE_UNITS, "src/ctr/nn/cec/cec_CecControl.cpp")
 
     if subsys == "svc":
         return "src/ctr/svc/svc_Api.c"
@@ -556,7 +522,7 @@ def assign_target_unit(fn: dict) -> str:
             elif vma < 0x00117000:
                 return "src/engine/lfw/lxpCCameraControl.cpp"
             elif vma < 0x0011E000:
-                return "src/engine/lfw/lxpCResourceManager.cpp"
+                return "src/engine/lfw/lxpCResourceManagerBase.cpp"
             elif vma < 0x00121500:
                 return "src/engine/lfw/lfwCObject.cpp"
             elif vma < 0x00123000:
@@ -576,7 +542,7 @@ def assign_target_unit(fn: dict) -> str:
 
         if vma == 0x0013F29C:
             return "src/engine/core/lfwCObjManager.cpp"
-        return _lookup_range_unit(vma, _ENGINE_CORE_UNITS, "src/engine/core/lfwCSystemRuntime.cpp")
+        return _lookup_range_unit(vma, _ENGINE_CORE_UNITS, "src/engine/core/lfwCLoop.cpp")
 
     # 5. Default fallback
     return f"src/{layer}/{subsys}/{subsys}.cpp"
@@ -611,7 +577,7 @@ def main():
 
     report_units = []
 
-    # 1. Unit: extracted_data (matching Animal Crossing reference layout)
+    # 1. Unit: extracted_data (.rodata + .data + .bss)
     data_unit = {
         "name": "extracted_data",
         "measures": {

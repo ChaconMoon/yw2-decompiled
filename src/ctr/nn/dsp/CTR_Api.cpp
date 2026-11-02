@@ -2,7 +2,7 @@
  * @file CTR_Api.cpp
  * @brief Nintendo CTR-SDK nn::dsp::CTR high-level service API & state management.
  *
- * Reference: ACNL decomp (lib/nn/src/nn/dsp/CTR/CTR_Api.cpp)
+ * Reference: Nintendo 3DS CTR-SDK (nn/dsp/CTR/CTR_Api.cpp)
  */
 
 #include "nn/dsp/CTR/CTR_Api.h"

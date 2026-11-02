@@ -4,7 +4,7 @@
  *
  * Implements channel descriptors, voice playback, audio buffer calculation,
  * and interface cleanup for hardware audio mixing via Teak DSP.
- * Reference: ACNL decomp (lib/nn/src/nn/snd/CTR/snd_Dspsnd.cpp)
+ * Reference: Nintendo 3DS CTR-SDK (nn/snd/CTR/snd_Dspsnd.cpp)
  */
 
 #include "nn/snd/CTR/snd_Dspsnd.h"
