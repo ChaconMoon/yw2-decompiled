@@ -12,8 +12,6 @@
 void func_00136780(const u32 *pSlot, u32 value)
 {
         u32 *tls;
-        __asm {
-                mrc p15, 0, tls, c13, c0, 3
-        }
+        CTR_GET_TLS(tls);
         tls[*pSlot] = value;
 }

@@ -66,6 +66,17 @@ typedef s32                 intptr_t;
 
 #define STATIC_ASSERT(cond) typedef char __static_assert_##__LINE__[(cond) ? 1 : -1]
 
+/* ========================================================================
+ * Compiler intrinsics & inline assembly compatibility (ARMCC vs GCC)
+ * ======================================================================== */
+#ifdef __ARMCC_VERSION
+#define CTR_GET_TLS(ptr) __asm { mrc p15, 0, ptr, c13, c0, 3 }
+#else
+#define __nop() __asm__ volatile ("nop")
+#define __schedule_barrier() __asm__ volatile ("" ::: "memory")
+#define CTR_GET_TLS(ptr) __asm__ volatile ("mrc p15, 0, %0, c13, c0, 3" : "=r"(ptr))
+#endif
+
 #ifdef __cplusplus
 }
 #endif

@@ -368,19 +368,19 @@ address,symbol,size,layer,subsystem,level,status,description
 0x001384E8,func_001384E8,160,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (14 calls)
 0x00138590,func_00138590,64,ctr,nn_dsp,7_complex_caller,matched,nn::dsp handle query and replacement sequence via func_00148084 and svc 0x23
 0x001385D0,func_001385D0,28,ctr,nn_dsp,6_moderate_caller,matched,nn::dsp status check and conditional call to func_001371D4
-0x001385EC,func_001385EC,60,ctr,nn_dsp,3_arithmetic_logic,asm_stub,Local arithmetic/bitwise computation
-0x0013862C,func_0013862C,52,ctr,nn_dsp,3_arithmetic_logic,asm_stub,Local arithmetic/bitwise computation
+0x001385EC,func_001385EC,60,ctr,nn_dsp,3_arithmetic_logic,matched,Sends synchronous IPC request 0x001E0042 (WriteMultiEx_SPI2 Inst 1)
+0x0013862C,func_0013862C,52,ctr,nn_dsp,3_arithmetic_logic,matched,Sends IPC command 0x000A0000 (MaskSemaphore) via svcSendSyncRequest to DSP service
 0x00138660,func_00138660,40,ctr,nn_dsp,3_arithmetic_logic,matched,Sends IPC command 0x000E0000 via svcSendSyncRequest to DSP service
-0x00138688,func_00138688,72,ctr,nn_dsp,4_complex_leaf,asm_stub,Large leaf algorithm
+0x00138688,func_00138688,72,ctr,nn_dsp,3_arithmetic_logic,matched,Sends synchronous IPC request 0x000C0082 (ConvertProcessAddressFromDspDram Inst 1)
 0x001386D4,func_001386D4,24,ctr,nn_dsp,3_arithmetic_logic,matched,nn::dsp non-empty string validation
 0x001386EC,func_001386EC,52,ctr,nn_dsp,7_complex_caller,matched,nn::dsp validate prefix FGONLYT
 0x0013873C,func_0013873C,48,ctr,nn_dsp,6_moderate_caller,matched,nn::dsp conditional sub-component pointer getter (+0x14) with error helper call
 0x00138770,func_00138770,60,ctr,nn_dsp,7_complex_caller,matched,nn::dsp sequential sub-buffer registration (IDs 53 and 54) and global status return
 0x001387B0,func_001387B0,48,ctr,nn_dsp,6_moderate_caller,matched,nn::dsp conditional sub-component pointer getter (+0x18) with error helper call
-0x001387E4,func_001387E4,60,ctr,nn_dsp,3_arithmetic_logic,asm_stub,Local arithmetic/bitwise computation
-0x00138824,func_00138824,52,ctr,nn_dsp,3_arithmetic_logic,asm_stub,Local arithmetic/bitwise computation
+0x001387E4,func_001387E4,60,ctr,nn_dsp,3_arithmetic_logic,matched,Sends synchronous IPC request 0x001E0042 (WriteMultiEx_SPI2 Inst 2)
+0x00138824,func_00138824,52,ctr,nn_dsp,3_arithmetic_logic,matched,Sends IPC command 0x000A0000 (MaskSemaphore) via svcSendSyncRequest to DSP service (Instance 2)
 0x00138858,func_00138858,40,ctr,nn_dsp,3_arithmetic_logic,matched,Sends IPC command 0x000E0000 via svcSendSyncRequest to DSP service
-0x00138880,func_00138880,72,ctr,nn_dsp,4_complex_leaf,asm_stub,Large leaf algorithm
+0x00138880,func_00138880,72,ctr,nn_dsp,3_arithmetic_logic,matched,Sends synchronous IPC request 0x000C0082 (ConvertProcessAddressFromDspDram Inst 2)
 0x001388CC,func_001388CC,32,ctr,nn_dsp,3_arithmetic_logic,matched,nn::dsp bounded string length (strnlen)
 0x001388EC,func_001388EC,192,ctr,nn_dsp,7_complex_caller,asm_stub,Complex caller (8 calls)
 0x001389BC,func_001389BC,16,ctr,nn_dsp,2_simple_accessor,matched,nn::dsp global signed byte getter (0x00815DAC)

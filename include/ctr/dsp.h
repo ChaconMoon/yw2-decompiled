@@ -142,13 +142,19 @@ extern "C"
         void   func_001384AC(u32 *pHandle);                                       /* 0x001384AC: closes handle if unk_00828EAD is set */
         void   func_00138590(u32 *pHandle);                                       /* 0x00138590: queries new handle via func_00148084 and replaces existing handle */
         void   func_001385D0(void);                                               /* 0x001385D0: status check and conditional call to func_001371D4 */
+        s32    func_001385EC(const u32 *pHandle, const void *buffer, u32 size);   /* 0x001385EC: sends IPC command 0x001E0042 (WriteMultiEx_SPI2 Inst 1) */
+        s32    func_0013862C(const u32 *pHandle, u8 *pOutSemaphore);              /* 0x0013862C: sends IPC command 0x000A0000 (MaskSemaphore) */
         s32    func_00138660(const u32 *pHandle);                                 /* 0x00138660: sends IPC command 0x000E0000 */
+        s32    func_00138688(const u32 *pHandle, const void *buffer, u32 size, u8 param4); /* 0x00138688: sends IPC command 0x000C0082 (ConvertProcessAddressFromDspDram Inst 1) */
         bool32 func_001386D4(const char *str);                                    /* 0x001386D4: validates non-empty string */
         bool32 func_001386EC(const char *str);                                    /* 0x001386EC: checks if str starts with "FGONLYT" */
         s32    func_0013873C(void **outPtr);                                      /* 0x0013873C: retrieves sub-component pointer at +0x14 or returns error */
         s32    func_00138770(DspContext_00138770 *ctx);                           /* 0x00138770: registers two sub-buffers via func_00148798 and returns unk_00829A74 */
         s32    func_001387B0(void **outPtr);                                      /* 0x001387B0: retrieves sub-component pointer at +0x18 or returns error */
+        s32    func_001387E4(const u32 *pHandle, const void *buffer, u32 size);   /* 0x001387E4: sends IPC command 0x001E0042 (WriteMultiEx_SPI2 Inst 2) */
+        s32    func_00138824(const u32 *pHandle, u8 *pOutSemaphore);              /* 0x00138824: sends IPC command 0x000A0000 (MaskSemaphore) */
         s32    func_00138858(const u32 *pHandle);                                 /* 0x00138858: sends IPC command 0x000E0000 */
+        s32    func_00138880(const u32 *pHandle, const void *buffer, u32 size, u8 param4); /* 0x00138880: sends IPC command 0x000C0082 (ConvertProcessAddressFromDspDram Inst 2) */
         u32 func_001388CC(const char *str, u32 max_len);                         /* 0x001388CC: strnlen loop */
         s8 func_001389BC(void);                         /* 0x001389BC: returns unk_00815DAC */
         u32 func_001389CC(void);                        /* 0x001389CC: checks unk_00815DAC and invokes func_0016C994 */

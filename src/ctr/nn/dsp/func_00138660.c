@@ -26,9 +26,7 @@ s32 func_00138660(const u32 *pHandle)
         s32 res;
 
         /* Retrieve TLS base pointer from ARM11 CP15 coprocessor */
-        __asm {
-                mrc p15, 0, cmdbuf, c13, c0, 3
-        }
+        CTR_GET_TLS(cmdbuf);
 
         /* Access IPC Command Buffer located at TLS offset +0x80 (128 bytes) */
         cmdbuf = (u32 *)((char *)cmdbuf + 128);
