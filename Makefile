@@ -165,7 +165,26 @@ build/src/game/loops/func_0011054C.o: src/game/loops/func_0011054C.c
 		$(CC) $(CFLAGS) $< -o $@; \
 	fi
 
+build/src/ctr/nn/dsp/thunk_FUN_0013457c.o: ARMFLAGS += -Otime
+build/src/ctr/nn/dsp/thunk_FUN_0013457c.o: src/ctr/nn/dsp/thunk_FUN_0013457c.c
+	@mkdir -p $(dir $@)
+	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
+		$(ARMCC) $(ARMFLAGS) $< -o $@; \
+	else \
+		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
+		$(CC) $(CFLAGS) $< -o $@; \
+	fi
+
 build/src/ctr/nn/dsp/func_00136318.o: src/ctr/nn/dsp/func_00136318.c
+	@mkdir -p $(dir $@)
+	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
+		$(ARMCC) $(ARMFLAGS) $< -o $@; \
+	else \
+		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
+		$(CC) $(CFLAGS) $< -o $@; \
+	fi
+
+build/src/ctr/nn/dsp/func_00136330.o: src/ctr/nn/dsp/func_00136330.c
 	@mkdir -p $(dir $@)
 	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
 		$(ARMCC) $(ARMFLAGS) $< -o $@; \
@@ -196,6 +215,15 @@ build/src/ctr/nn/dsp/func_00136420.o: src/ctr/nn/dsp/func_00136420.c
 
 build/src/ctr/nn/dsp/func_00136804.o: ARMFLAGS := --cpu=mpcore -O2 -Otime --gnu -c -I . -I include
 build/src/ctr/nn/dsp/func_00136804.o: src/ctr/nn/dsp/func_00136804.c
+	@mkdir -p $(dir $@)
+	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
+		$(ARMCC) $(ARMFLAGS) $< -o $@; \
+	else \
+		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
+		$(CC) $(CFLAGS) $< -o $@; \
+	fi
+
+build/src/ctr/nn/dsp/func_00137114.o: src/ctr/nn/dsp/func_00137114.c
 	@mkdir -p $(dir $@)
 	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
 		$(ARMCC) $(ARMFLAGS) $< -o $@; \
@@ -314,9 +342,29 @@ build/src/ctr/nn/dsp/func_001386D4.o: src/ctr/nn/dsp/func_001386D4.c
 		$(CC) $(CFLAGS) $< -o $@; \
 	fi
 
+build/src/ctr/nn/dsp/func_001386EC.o: src/ctr/nn/dsp/func_001386EC.c
+	@mkdir -p $(dir $@)
+	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
+		$(ARMCC) $(ARMFLAGS) $< -o $@; \
+	else \
+		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
+		$(CC) $(CFLAGS) $< -o $@; \
+	fi
+
 build/src/ctr/nn/dsp/func_001388CC.o: src/ctr/nn/dsp/func_001388CC.c
 	@mkdir -p $(dir $@)
 	@if [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
+		$(ARMCC) $(ARMFLAGS) $< -o $@; \
+	else \
+		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \
+		$(CC) $(CFLAGS) $< -o $@; \
+	fi
+
+build/src/ctr/nn/dsp/func_001389CC.o: src/ctr/nn/dsp/func_001389CC.c
+	@mkdir -p $(dir $@)
+	@if [ -f "tools/armcc/4.1/b1049/bin/armcc.exe" ]; then \
+		$(WIBO) tools/armcc/4.1/b1049/bin/armcc.exe $(ARMFLAGS) -Otime $< -o $@; \
+	elif [ -f "tools/armcc/4.0/b821/bin/armcc.exe" ]; then \
 		$(ARMCC) $(ARMFLAGS) $< -o $@; \
 	else \
 		echo "⚠️ Warning: ARMCC not found, compiling with GCC fallback..."; \

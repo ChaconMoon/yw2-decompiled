@@ -14,6 +14,7 @@ extern "C"
 
         extern s32 unk_0086A0A4;
         extern const u32 unk_00708D68;
+        extern const char s_FGONLYT_007132D4[];
         extern u32 unk_00815DFC;
         extern u32 unk_00815C78;
         extern s8 unk_00815DAC;
@@ -96,12 +97,21 @@ extern "C"
                 void (**vtable)(void *self); /* 0x00: pointer to virtual function table */
         } DspInterface_00136420;
 
+        typedef struct DspObject_00136318
+        {
+                DspHeader_00136318 header; /* 0x00: magic (0xE7E3FFFF) + status (0) */
+                uintptr_t          child;  /* 0x08: tagged pointer to DspInterface_00136420 */
+        } DspObject_00136318;
+
         u32  func_0012746C(void);
+        void func_0013457C(void *arg0);
+        void thunk_FUN_0013457c(void *arg0);
         void func_00136154(void *arg);
         void func_00136594(void *arg);
         void func_001365E4(void *arg);
         void func_001371D4(void);
         void func_0013769C(void *arg);
+        s32  func_0013EC88(const char *s1, const char *s2, u32 n);
         void func_00146570(u32 *pTemp, void *arg0);
         void func_00147C74(void *obj, void *param);
         void func_00148024(void);
@@ -109,8 +119,12 @@ extern "C"
         u32  func_001480C0(void);
         s32  func_001481E8(s32 err);
         void func_00148798(u32 id, void *ptr, u32 flags);
+        u32  func_001488F0(void);
         void func_0016A89C(void *arg);
+        void func_0016C994(void);
+        u32  func_002FEEBC(const char *str);
         void func_00136318(DspHeader_00136318 *header); /* 0x00136318: initializes header */
+        DspObject_00136318* func_00136330(DspObject_00136318 *self); /* 0x00136330: cleans up child interface and returns self */
         void func_0013636C(void *arg0);                 /* 0x0013636C: captures return from func_0012746C and passes to func_00146570 */
         void func_00136420(DspInterface_00136420 *obj); /* 0x00136420: virtual method dispatch at vtable[12] */
         DspChannel_00136804 *func_00136804(DspChannel_00136804 *obj); /* 0x00136804: clears channel bit in mask 0x00828E90 */
@@ -128,11 +142,13 @@ extern "C"
         void   func_00138590(u32 *pHandle);                                       /* 0x00138590: queries new handle via func_00148084 and replaces existing handle */
         void   func_001385D0(void);                                               /* 0x001385D0: status check and conditional call to func_001371D4 */
         bool32 func_001386D4(const char *str);                                    /* 0x001386D4: validates non-empty string */
+        bool32 func_001386EC(const char *str);                                    /* 0x001386EC: checks if str starts with "FGONLYT" */
         s32    func_0013873C(void **outPtr);                                      /* 0x0013873C: retrieves sub-component pointer at +0x14 or returns error */
         s32    func_00138770(DspContext_00138770 *ctx);                           /* 0x00138770: registers two sub-buffers via func_00148798 and returns unk_00829A74 */
         s32    func_001387B0(void **outPtr);                                      /* 0x001387B0: retrieves sub-component pointer at +0x18 or returns error */
         u32 func_001388CC(const char *str, u32 max_len);                         /* 0x001388CC: strnlen loop */
         s8 func_001389BC(void);                         /* 0x001389BC: returns unk_00815DAC */
+        u32 func_001389CC(void);                        /* 0x001389CC: checks unk_00815DAC and invokes func_0016C994 */
         s8 func_00138A80(void);                         /* 0x00138A80: returns unk_00815CA0 */
         u32 func_00138A90(void);                        /* 0x00138A90: returns applet state field at 0x00814E00 (+0x10) */
         void func_00138AA0(void);                       /* 0x00138AA0: singleton wrapper -> func_001365E4(&unk_00815C78) */
