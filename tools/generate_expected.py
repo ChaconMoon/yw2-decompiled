@@ -187,9 +187,15 @@ def main():
 
     # Auto-discover any other multi-function TU from compiled objects in build/
     manifest_by_sym = {}
+    manifest_size_by_sym = {}
     with open(MANIFEST, "r", encoding="utf-8") as f:
         for row in csv.DictReader(f):
-            manifest_by_sym[row["symbol"].strip()] = row["address"].strip()
+            sym = row["symbol"].strip()
+            manifest_by_sym[sym] = row["address"].strip()
+            try:
+                manifest_size_by_sym[sym] = int(row["size"].strip())
+            except ValueError:
+                manifest_size_by_sym[sym] = 0
 
     build_dir = PROJECT_ROOT / "build" / "src"
     if build_dir.exists():
@@ -217,7 +223,7 @@ def main():
 
     for tu_name, tu_funcs in consolidated_tus.items():
         out_o = EXPECTED_DIR / f"{tu_name}.o"
-        s_parts = ['.arm\n.section .text, "ax", %progbits\n']
+        s_parts = ['.syntax unified\n.arm\n.section .text, "ax", %progbits\n']
 
         tu_ok = True
         for addr, sym in tu_funcs:
@@ -239,6 +245,27 @@ def main():
                 as_cmd = ["arm-none-eabi-as", "-mcpu=mpcore", "-mfpu=vfpv2", temp_s, "-o", str(out_o)]
                 as_res = subprocess.run(as_cmd, capture_output=True, text=True)
                 if as_res.returncode != 0:
+                    # Fallback: assemble each function using raw bytes from code.raw.bin
+                    fallback_parts = ['.syntax unified\n.arm\n.section .text, "ax", %progbits\n']
+                    for addr, sym in tu_funcs:
+                        fn_addr = int(addr, 16)
+                        fn_size = manifest_size_by_sym.get(sym, 0)
+                        if fn_size <= 0:
+                            break
+                        fn_offset = fn_addr - BASE_ADDR
+                        raw_bytes = code_bin[fn_offset:fn_offset + fn_size]
+                        byte_lines = ", ".join(f"0x{b:02x}" for b in raw_bytes)
+                        fallback_parts.append(f".global {sym}\n.type {sym}, %function\n{sym}:\n    .byte {byte_lines}\n.size {sym}, . - {sym}\n")
+                    else:
+                        with tempfile.NamedTemporaryFile("w", suffix=".s", delete=False) as tf2:
+                            tf2.write("\n".join(fallback_parts))
+                            temp_s2 = tf2.name
+                        as_res2 = subprocess.run(["arm-none-eabi-as", "-mcpu=mpcore", "-mfpu=vfpv2", temp_s2, "-o", str(out_o)], capture_output=True, text=True)
+                        Path(temp_s2).unlink(missing_ok=True)
+                        if as_res2.returncode == 0:
+                            generated += 1
+                            print(f"  ✓ Generated consolidated TU (raw bytes): expected/{tu_name}.o")
+                            continue
                     print(f"  ❌ Failed to assemble TU {tu_name}: {as_res.stderr.strip()}")
                     errors += 1
                 else:

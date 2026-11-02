@@ -131,7 +131,13 @@ extern "C"
         DspChannel_00136804 *func_00136804(DspChannel_00136804 *obj); /* 0x00136804: clears channel bit in mask 0x00828E90 */
         void func_001375DC(DspComponent_001375DC *obj); /* 0x001375DC: decrements counter at +0x54 after sub-cleanup at +0x18 */
         u32 func_00137054(void);                        /* 0x00137054: returns unk_00815DFC */
+        s32 func_00136FC4(u32 arg0, u32 arg1, u32 arg2, u32 arg3); /* 0x00136FC4: sends IPC command 0x000100C2 */
         u32 func_00137114(u32 *pHandle);                /* 0x00137114: closes handle via svc 0x23 and resets to unk_00708D68 */
+        u8  func_001371B4(void);                        /* 0x001371B4: queries boolean flag via func_00146D3C */
+        void func_00146D3C(u8 *pOut);                   /* 0x00146D3C: IPC helper querying component state */
+        s32  func_001375A4(const u32 *pHandle, const void *buffer); /* 0x001375A4: sends IPC command 0x00010800 */
+        void func_00152104(void *dest, const void *src, u32 size);  /* 0x00152104: optimized memcpy */
+        s32  func_00137E20(void);                       /* 0x00137E20: closes session handle and resets to default */
         u16 func_00137920(DspChannel_00137920 *channel, u16 val); /* 0x00137920: exchange u16 field at +0x34 */
         u16 func_00137930(DspChannel_00137920 *channel, u16 flag); /* 0x00137930: exchange flag bit 0 at +0x36 */
         s8  func_00137A0C(DspChannel_00137920 *channel, s8 state); /* 0x00137A0C: exchange s8 field at +0x38 */
@@ -165,6 +171,12 @@ extern "C"
         void func_00138AA0(void);                       /* 0x00138AA0: singleton wrapper -> func_001365E4(&unk_00815C78) */
         void func_00138AAC(void);                       /* 0x00138AAC: singleton wrapper -> func_0016A89C(&unk_00815C78) */
         void func_00138B58(void);                       /* 0x00138B58: singleton wrapper -> func_00136594(&unk_00815C78) */
+        s32  func_00138E24(u32 channel, u8 *outFlag);   /* 0x00138E24: sends IPC command 0x00090040 (GetSemaphore) */
+
+        extern const u32 g_DspSessionHandle_00815C9C;   /* 0x00815C9C: DSP service global session handle */
+        extern const u32 g_DspSessionHandle_00828EF0;   /* 0x00828EF0: DSP service global session handle (IPC command 0x000100C2) */
+        extern u32 g_DspSessionHandle_0082C648;         /* 0x0082C648: DSP service global session handle (cleanup) */
+        extern const u32 s_defaultHandle_00712850;      /* 0x00712850: default handle value (0) */
 
 #ifdef __cplusplus
 }

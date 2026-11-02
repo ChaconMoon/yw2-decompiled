@@ -197,6 +197,7 @@ def main():
                     pass
 
             insn = re.sub(r"nop\s*\{0\}", "nop", insn)
+            insn = re.sub(r"\bmrc\s+(?:p?15),\s*(\d+),\s*([^,]+),\s*c(?:r)?(\d+),\s*c(?:r)?(\d+)(?:,\s*\{?(\d+)\}?)?", r"mrc p15, \1, \2, c\3, c\4, \5", insn)
 
         # Print label if this instruction is a branch target
         if line_addr in branch_targets:
