@@ -15,8 +15,8 @@ extern "C"
         extern s32 unk_00865F10;
         extern s32 unk_00865F18;
 
-        void *func_00127EE0(void);
-        void *func_00127EEC(void);
+        void *func_00127EE0(void); /* 0x00127EE0 */
+        void *func_00127EEC(void); /* 0x00127EEC */
 
         typedef struct NdmElement8
         {
@@ -33,7 +33,7 @@ extern "C"
                 NdmElement8 items[1];
         } NdmContainer;
 
-        NdmElement8 *func_001280A8(NdmContainer *ctx, u32 index);
+        NdmElement8 *func_001280A8(NdmContainer *ctx, u32 index); /* 0x001280A8 */
 
 #ifdef __cplusplus
 }

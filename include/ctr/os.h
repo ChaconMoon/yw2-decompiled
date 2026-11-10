@@ -22,7 +22,7 @@ extern "C"
         u32 func_001063F4(void);     /* 0x001063F4 (reads 0x1FF80040) */
         void func_00106504(void);    /* 0x00106504 (app heap init 32 MB) */
         void func_00106518(void);    /* 0x00106518 */
-        void func_00112EF4(void *addr, u32 base, u32 size);
+        void func_00112EF4(void *addr, u32 base, u32 size); /* 0x00112EF4 */
         s8 func_0010678C(void);         /* 0x0010678C */
         void func_001274A0(vu32 *lock); /* 0x001274A0 (ldrex/strex spinlock) */
         u32 func_00127520(void);        /* 0x00127520 */

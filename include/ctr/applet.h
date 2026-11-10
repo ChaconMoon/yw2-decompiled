@@ -3,15 +3,6 @@
 
 #include "types.h"
 
-#ifndef __cplusplus
-#ifndef __bool_true_false_are_defined
-typedef unsigned char bool;
-#define true 1
-#define false 0
-#define __bool_true_false_are_defined 1
-#endif
-#endif
-
 #ifdef __cplusplus
 
 namespace nn
@@ -21,9 +12,9 @@ namespace nn
                 namespace CTR
                 {
                         /**
-                         * @brief Checks whether the currently running CTR title is a standard application.
+                         * @brief Checks whether the currently running CTR title is a standard application (0x001284E4).
                          */
-                        bool IsApplication();
+                        bool IsApplication(); /* 0x001284E4 */
                 }
 
                 namespace detail
@@ -33,82 +24,82 @@ namespace nn
                         /**
                          * @brief Registers callback slot 3 and its user context argument (0x00128544).
                          */
-                        void SetNotificationCallback(void *callback, void *arg);
+                        void SetNotificationCallback(void *callback, void *arg); /* 0x00128544 */
 
                         /**
                          * @brief Stores the given 32-bit state value into unk_10 (0x00128558).
                          */
-                        void SetState10(u32 val);
+                        void SetState10(u32 val); /* 0x00128558 */
 
                         /**
                          * @brief Reads the 8-bit unsigned state value at offset 0x0C (0x00128568).
                          */
-                        u8 GetState0C();
+                        u8 GetState0C(); /* 0x00128568 */
 
                         /**
                          * @brief Stores an 8-bit unsigned state value at offset 0x0C (0x00128578).
                          */
-                        void SetState0C(u8 val);
+                        void SetState0C(u8 val); /* 0x00128578 */
 
                         /**
                          * @brief Registers the sleep transition callback and context argument (0x00128588).
                          */
-                        void SetSleepCallback(void *callback, void *arg);
+                        void SetSleepCallback(void *callback, void *arg); /* 0x00128588 */
 
                         /**
                          * @brief Sets the signed state byte at offset 0x08 to 1 (0x0012859C).
                          */
-                        void SetState08_1();
+                        void SetState08_1(); /* 0x0012859C */
 
                         /**
                          * @brief Reads the signed 8-bit state value at offset 0x08 (0x001285B0).
                          */
-                        s8 GetState08();
+                        s8 GetState08(); /* 0x001285B0 */
 
                         /**
                          * @brief Registers the awake transition callback and context argument (0x001285C0).
                          */
-                        void SetAwakeCallback(void *callback, void *arg);
+                        void SetAwakeCallback(void *callback, void *arg); /* 0x001285C0 */
 
                         /**
                          * @brief Resets the signed state byte at offset 0x08 to 0 (0x001285D4).
                          */
-                        void SetState08_0();
+                        void SetState08_0(); /* 0x001285D4 */
 
                         /**
                          * @brief Reads the 8-bit unsigned state value at offset 0x0B (0x001285E8).
                          */
-                        u8 GetState0B();
+                        u8 GetState0B(); /* 0x001285E8 */
 
                         /**
                          * @brief Stores an 8-bit unsigned state value at offset 0x0B (0x001285F8).
                          */
-                        void SetState0B(u8 val);
+                        void SetState0B(u8 val); /* 0x001285F8 */
 
                         /**
                          * @brief Reads the signed 8-bit state value at offset 0x0D (0x00128608).
                          */
-                        s8 GetState0D();
+                        s8 GetState0D(); /* 0x00128608 */
 
                         /**
                          * @brief Stores a signed 8-bit state value at offset 0x0D (0x00128618).
                          */
-                        void SetState0D(s8 val);
+                        void SetState0D(s8 val); /* 0x00128618 */
 
                         /**
                          * @brief Sets the signed state byte at offset 0x07 to 1 (0x00128628).
                          */
-                        void SetState07_1();
+                        void SetState07_1(); /* 0x00128628 */
 
                         /**
                          * @brief Reads the signed 8-bit state value at offset 0x07 (0x0012863C).
                          */
-                        s8 GetState07();
+                        s8 GetState07(); /* 0x0012863C */
 
                         /**
                          * @brief Resets the signed state byte at offset 0x07 to 0 (0x0012864C).
                          */
-                        void SetState07_0();
+                        void SetState07_0(); /* 0x0012864C */
 
                         /**
                          * @brief Applet system callbacks and context registration structure (0x00815CA0).

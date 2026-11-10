@@ -15,14 +15,13 @@ extern "C" {
 extern s32 unk_00868A9C;
 extern s32 unk_00868F10;
 
-void *func_0012CB00(void);
-s32   func_0012FEC0(void);
-s32   func_00130018(void);
-void *func_001300B0(void);
+void *func_0012CB00(void);         /* 0x0012CB00: returns &unk_00868A9C */
+s32   func_0012FEC0(void);         /* 0x0012FEC0: returns 1 */
+s32   func_00130018(void);         /* 0x00130018: returns 1 */
+void *func_001300B0(void);         /* 0x001300B0: returns &unk_00868F10 */
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif /* ENGINE_LXP_H */
-

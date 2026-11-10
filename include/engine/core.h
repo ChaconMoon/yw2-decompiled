@@ -13,11 +13,10 @@ extern "C" {
 
 extern s32 unk_00867DA8;
 
-void *func_0013F29C(void);
+void *func_0013F29C(void);         /* 0x0013F29C: returns &unk_00867DA8 */
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif /* ENGINE_CORE_H */
-

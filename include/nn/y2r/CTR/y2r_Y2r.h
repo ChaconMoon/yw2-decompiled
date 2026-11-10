@@ -11,11 +11,11 @@
 extern "C" {
 #endif
 
-void func_00112AA8(Y2rDevice *dev);
-void *func_00112D8C(void *self);
-u16 func_00112E60(const Y2rObject *y2rObject);
-void func_00112EC8(void);
-void func_00112EE4(u32 arg0);
+void func_00112AA8(Y2rDevice *dev);             /* 0x00112AA8 */
+void *func_00112D8C(void *self);                 /* 0x00112D8C */
+u16 func_00112E60(const Y2rObject *y2rObject);   /* 0x00112E60 */
+void func_00112EC8(void);                        /* 0x00112EC8 */
+void func_00112EE4(u32 arg0);                    /* 0x00112EE4 */
 
 #ifdef __cplusplus
 }

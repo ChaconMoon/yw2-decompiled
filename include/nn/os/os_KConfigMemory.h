@@ -1,5 +1,5 @@
 #pragma once
-#include "Types.h"
+#include "nn/Types.h"
 
 /* Info for this header file has been generated from https://www.3dbrew.org/wiki/Configuration_Memory */
 namespace nn {

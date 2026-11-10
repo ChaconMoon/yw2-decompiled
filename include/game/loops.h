@@ -28,78 +28,78 @@
 class ywCLoopRPG
 {
 public:
-        static s32 getClassType();
-        static const char *getClassName();
+        static s32 getClassType();          /* 0x0010CEE8 */
+        static const char *getClassName();  /* 0x0010CEF0 */
 };
 
 class ywCLoopMain
 {
 public:
-        static s32 getClassType();
-        static const char *getClassName();
+        static s32 getClassType();          /* 0x0010CFF4 */
+        static const char *getClassName();  /* 0x0010CFFC */
 };
 
 class ywCLoopMenu
 {
 public:
-        static s32 getClassType();
-        static const char *getClassName();
+        static s32 getClassType();          /* 0x0010D134 */
+        static const char *getClassName();  /* 0x0010D13C */
 };
 
 class ywCLoopRace
 {
 public:
-        static s32 getClassType();
-        static const char *getClassName();
+        static s32 getClassType();          /* 0x0010D234 */
+        static const char *getClassName();  /* 0x0010D23C */
 };
 
 class ywCLoopEvent
 {
 public:
-        static s32 getClassType();
-        static const char *getClassName();
+        static s32 getClassType();          /* 0x0010D3A8 */
+        static const char *getClassName();  /* 0x0010D3B0 */
 };
 
 class ywCLoopBattle
 {
 public:
-        static s32 getClassType();
-        static const char *getClassName();
+        static s32 getClassType();          /* 0x0010D500 */
+        static const char *getClassName();  /* 0x0010D508 */
 };
 
 class ywCLoopCapsule
 {
 public:
-        static s32 getClassType();
-        static const char *getClassName();
+        static s32 getClassType();          /* 0x0010D63C */
+        static const char *getClassName();  /* 0x0010D644 */
 };
 
 class ywCLoopOrgeTime
 {
 public:
-        static s32 getClassType();
-        static const char *getClassName();
+        static s32 getClassType();          /* 0x0010DC40 */
+        static const char *getClassName();  /* 0x0010DC48 */
 };
 
 class ywCLoopWatchmap
 {
 public:
-        static s32 getClassType();
-        static const char *getClassName();
+        static s32 getClassType();          /* 0x0010DD40 */
+        static const char *getClassName();  /* 0x0010DD48 */
 };
 
 class ywCLoopYokaispot
 {
 public:
-        static s32 getClassType();
-        static const char *getClassName();
+        static s32 getClassType();          /* 0x0010E35C */
+        static const char *getClassName();  /* 0x0010E364 */
 };
 
 class ywCLoopQR
 {
 public:
-        static s32 getClassType();
-        static const char *getClassName();
+        static s32 getClassType();          /* 0x0010FEBC */
+        static const char *getClassName();  /* 0x0010FEC4 */
 };
 
 #endif /* __cplusplus */
@@ -123,11 +123,11 @@ typedef struct YwLoopControllerState
 
 extern YwLoopControllerState g_LoopState_00815C90;
 
-void *func_0010C894(void);
-void  func_0010C870(void *callback);
-void  func_0010C880(void);
-void  func_0010C8A0(u8 mode);
-void  func_0010CA68(void *target);
+void *func_0010C894(void);            /* 0x0010C894 */
+void  func_0010C870(void *callback);  /* 0x0010C870 */
+void  func_0010C880(void);            /* 0x0010C880 */
+void  func_0010C8A0(u8 mode);         /* 0x0010C8A0 */
+void  func_0010CA68(void *target);    /* 0x0010CA68 */
 
 typedef struct YwLoopHeader
 {
@@ -143,7 +143,7 @@ typedef struct YwLoopHeader
         u32 value;
 } YwLoopHeader;
 
-void func_0011054C(YwLoopHeader *ywLoopHeader);
+void func_0011054C(YwLoopHeader *ywLoopHeader); /* 0x0011054C */
 
 #ifdef __cplusplus
 }

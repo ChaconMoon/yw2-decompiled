@@ -71,19 +71,19 @@ extern "C"
         extern Y2rContext unk_008661EC;
 
         /* Method chaining wrapper invoking func_0014A06C */
-        void *func_00112D8C(void *self);
+        void *func_00112D8C(void *self);               /* 0x00112D8C */
 
         /* Returns u16 at offset +8648 */
-        u16 func_00112E60(const Y2rObject *y2rObject);
+        u16 func_00112E60(const Y2rObject *y2rObject); /* 0x00112E60 */
 
         /* Invokes func_00136154(&unk_0086A0A4) and returns 1 */
-        s32 func_001137C0(void);
+        s32 func_001137C0(void);                       /* 0x001137C0 */
 
         /* Returns bit 3 flag from unk_008661EC */
-        u32 func_00113F58(void);
+        u32 func_00113F58(void);                       /* 0x00113F58 */
 
         /* Returns float value at offset +8 of unk_00815090 */
-        f32 func_00113F70(void);
+        f32 func_00113F70(void);                       /* 0x00113F70 */
 
 #ifdef __cplusplus
 }
