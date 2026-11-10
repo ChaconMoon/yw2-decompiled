@@ -9,6 +9,7 @@ PROGRESS := $(PYTHON) $(TOOLS)/audit_progress.py
 CLASSES  := $(PYTHON) $(TOOLS)/extract_classes.py
 CHECK    := $(PYTHON) $(TOOLS)/check_match.py
 DUMP     := $(PYTHON) $(TOOLS)/dump_asm.py
+REA      := $(PYTHON) $(TOOLS)/rea_evidence.py
 INJECT   := $(PYTHON) $(TOOLS)/inject_code.py
 LIVE     := $(PYTHON) $(TOOLS)/export_live.py
 AZAHAR_MOD_DIR := $(HOME)/.local/share/azahar-emu/load/mods/00040000001B2900/exefs
@@ -27,7 +28,7 @@ OBJS     := $(patsubst src/%.c, build/src/%.o, $(C_SRCS)) \
             $(patsubst src/%.cpp, build/src/%.o, $(CPP_SRCS)) \
             $(patsubst src/%.s, build/src/%.o, $(S_SRCS))
 
-.PHONY: all build extract progress classes check inject dump report info clean distclean live hooks
+.PHONY: all build extract progress classes check inject dump rea report info clean distclean live hooks
 
 all: build
 
@@ -55,6 +56,7 @@ info:
 	@echo "  make hooks      - Install Git pre-commit & pre-push hooks (CI & README checks)"
 	@echo "  make inject     - Build 'build/code.bin' and install to Azahar emulator mods"
 	@echo "  make dump       - Dump clean assembly for decomp.me (e.g. make dump FUNC=0x0010B6D8)"
+	@echo "  make rea        - Run REA 3DS evidence inspector (make rea FUNC=0x001389CC or UNIT=CTR_Api.cpp)"
 	@echo "  make progress   - Audit progress and update README tables"
 	@echo "  make extract    - Inspect ROM and decompress 'code.bin'"
 	@echo "  make clean      - Clean temporary build artifacts"
@@ -99,6 +101,15 @@ dump:
 		echo "Usage: make dump FUNC=<address_or_symbol> [e.g. make dump FUNC=0x0010B6D8]"; \
 	else \
 		$(DUMP) $(FUNC) --plain; \
+	fi
+
+rea:
+	@if [ -n "$(FUNC)" ]; then \
+		$(REA) --func $(FUNC); \
+	elif [ -n "$(UNIT)" ]; then \
+		$(REA) --unit $(UNIT); \
+	else \
+		echo "Usage: make rea FUNC=<address_or_symbol> | make rea UNIT=<unit.cpp>"; \
 	fi
 
 

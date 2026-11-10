@@ -320,91 +320,91 @@ _ENGINE_LXP_UNITS = [
 
 _ENGINE_CORE_UNITS = [
     (0x0013F800, "src/engine/core/lfwCObjManager.cpp"),
-    (0x00144C00, "src/engine/core/lxpCCamera.cpp"),              # 10lxpCCamera (0x0013FF98)
-    (0x0014DF00, "src/engine/core/lxpCResource.cpp"),            # 0x00144CBC: "RES.bin"
-    (0x00153D00, "src/engine/core/lxpCResParticle.cpp"),         # 15lxpCResParticle (0x0014DF3C)
-    (0x00154A00, "src/engine/core/lxpCMemObj.cpp"),              # 10lxpCMemObj (0x00153DF0)
-    (0x00159600, "src/engine/core/lxpCResChara.cpp"),            # 12lxpCResChara (0x00154A20)
-    (0x0015E3E0, "src/engine/core/lxpCResourceBase.cpp"),        # 12lxpCResource (0x00159628)
-    (0x00168500, "src/engine/core/lxpCLoop.cpp"),                # 8lxpCLoop (0x0015E404)
-    (0x0016E000, "src/engine/core/lfwCObject.cpp"),              # 12__lfwCObject (0x001685C4)
-    (0x00172300, "src/engine/core/lfwCObj3D.cpp"),               # 9lfwCObj3D (0x0016E084)
-    (0x00176000, "src/engine/core/lxpCObjDOF.cpp"),              # 10lxpCObjDOF (0x00172314)
-    (0x00180000, "src/engine/core/lxpCSkyManager.cpp"),
-    (0x0018A000, "src/engine/core/lxpCFontManager.cpp"),
-    (0x00194000, "src/engine/gds/GDSFix.cpp"),                   # "GDSFix"
-    (0x0019E000, "src/engine/gds/GDSSwitch.cpp"),                # "GDSSwitch"
-    (0x001A8000, "src/engine/core/lxpCAnimeManager.cpp"),
-    (0x001B2000, "src/engine/core/lxpCCharaManager.cpp"),
-    (0x001BC000, "src/engine/core/lxpCImageManager.cpp"),
-    (0x001C6000, "src/engine/core/lxpCLightManager.cpp"),
-    (0x001D0000, "src/engine/core/lxpCModelManager.cpp"),
-    (0x001DA000, "src/engine/core/lxpCMovieManager.cpp"),
-    (0x001E4000, "src/engine/core/lxpCParticleManager.cpp"),
-    (0x001EE000, "src/engine/core/lxpCResourceManagerBase.cpp"),
-    (0x001F8000, "src/engine/core/lxpCResourceManagerRef.cpp"),
-    (0x00201A50, "src/engine/core/lxpCMessage.cpp"),             # 11lxpCMessage (0x001FDB58)
+    (0x00144C00, "src/engine/lxp/lxpCCamera.cpp"),                # 10lxpCCamera (0x0013FF98)
+    (0x0014DF00, "src/engine/lxp/lxpCResource.cpp"),              # 0x00144CBC: "RES.bin"
+    (0x00153D00, "src/engine/lxp/lxpCResParticle.cpp"),           # 15lxpCResParticle (0x0014DF3C)
+    (0x00154A00, "src/engine/lxp/lxpCMemObj.cpp"),                # 10lxpCMemObj (0x00153DF0)
+    (0x00159600, "src/engine/lxp/lxpCResChara.cpp"),              # 12lxpCResChara (0x00154A20)
+    (0x0015E3E0, "src/engine/lxp/lxpCResourceBase.cpp"),          # 12lxpCResource (0x00159628)
+    (0x00168500, "src/engine/lxp/lxpCLoop.cpp"),                  # 8lxpCLoop (0x0015E404)
+    (0x0016E000, "src/engine/lfw/lfwCObject.cpp"),                # 12__lfwCObject (0x001685C4)
+    (0x00172300, "src/engine/lfw/lfwCObj3D.cpp"),                 # 9lfwCObj3D (0x0016E084)
+    (0x00176000, "src/engine/lxp/lxpCObjDOF.cpp"),                # 10lxpCObjDOF (0x00172314)
+    (0x00180000, "src/engine/lxp/lxpCSkyManager.cpp"),
+    (0x0018A000, "src/engine/lxp/lxpCFontManager.cpp"),
+    (0x00194000, "src/engine/gds/GDSFix.cpp"),                    # "GDSFix"
+    (0x0019E000, "src/engine/gds/GDSSwitch.cpp"),                 # "GDSSwitch"
+    (0x001A8000, "src/engine/lxp/lxpCAnimeManager.cpp"),
+    (0x001B2000, "src/engine/lxp/lxpCCharaManager.cpp"),
+    (0x001BC000, "src/engine/lxp/lxpCImageManager.cpp"),
+    (0x001C6000, "src/engine/lxp/lxpCLightManager.cpp"),
+    (0x001D0000, "src/engine/lxp/lxpCModelManager.cpp"),
+    (0x001DA000, "src/engine/lxp/lxpCMovieManager.cpp"),
+    (0x001E4000, "src/engine/lxp/lxpCParticleManager.cpp"),
+    (0x001EE000, "src/engine/lxp/lxpCResourceManagerBase.cpp"),
+    (0x001F8000, "src/engine/lxp/lxpCResourceManagerRef.cpp"),
+    (0x00201A50, "src/engine/lxp/lxpCMessage.cpp"),               # 11lxpCMessage (0x001FDB58)
     # 0x00260000 - 0x0028014C (_ZN16.._ZN18 + BG managers)
-    (0x00264380, "src/engine/core/lxpCCameraMotion.cpp"),        # 16lxpCCameraMotion (0x002601C8)
-    (0x00267900, "src/engine/core/lxpCBGLoadManager.cpp"),       # 0x00265D60: "lxpCBGLoadManager"
-    (0x0026AE00, "src/engine/core/lxpCCameraControl.cpp"),       # 17lxpCCameraControl (0x00267950)
-    (0x00273B00, "src/engine/core/lxpCObjCharaMerge.cpp"),       # 17lxpCObjCharaMerge (0x0026AE24)
-    (0x00274D00, "src/engine/core/lxpCBGBuildManager.cpp"),      # 0x00273B60: "lxpCBGBuildManager"
-    (0x00280200, "src/engine/core/lxpCObjSimpleModel.cpp"),      # 18lxpCObjSimpleModel (0x00274D04)
+    (0x00264380, "src/engine/lxp/lxpCCameraMotion.cpp"),          # 16lxpCCameraMotion (0x002601C8)
+    (0x00267900, "src/engine/lxp/lxpCBGLoadManager.cpp"),         # 0x00265D60: "lxpCBGLoadManager"
+    (0x0026AE00, "src/engine/lxp/lxpCCameraControl.cpp"),         # 17lxpCCameraControl (0x00267950)
+    (0x00273B00, "src/engine/lxp/lxpCObjCharaMerge.cpp"),         # 17lxpCObjCharaMerge (0x0026AE24)
+    (0x00274D00, "src/engine/lxp/lxpCBGBuildManager.cpp"),        # 0x00273B60: "lxpCBGBuildManager"
+    (0x00280200, "src/engine/lxp/lxpCObjSimpleModel.cpp"),        # 18lxpCObjSimpleModel (0x00274D04)
     # 0x00580000 - 0x006F32AC (_ZN3liz..., _ZN5CLcs..., _ZN8lfw..., _ZN9lfw..., _ZNK...)
-    (0x00590000, "src/engine/core/lfwCCamera_Dev.cpp"),
-    (0x005A0000, "src/engine/core/lfwCCamera_Fix.cpp"),
-    (0x005B0000, "src/engine/core/lfwCCamera_Mtn.cpp"),
-    (0x005C0000, "src/engine/core/lfwCCamera_Dolly.cpp"),
-    (0x005D3000, "src/engine/core/lfwCCamera_Orbit.cpp"),
-    (0x005DF000, "src/engine/gds/GDSSwitch.cpp"),                # 0x005D3208..0x005DE020: "GDSFix" / "GDSSwitch"
+    (0x00590000, "src/engine/lfw/lfwCCamera_Dev.cpp"),
+    (0x005A0000, "src/engine/lfw/lfwCCamera_Fix.cpp"),
+    (0x005B0000, "src/engine/lfw/lfwCCamera_Mtn.cpp"),
+    (0x005C0000, "src/engine/lfw/lfwCCamera_Dolly.cpp"),
+    (0x005D3000, "src/engine/lfw/lfwCCamera_Orbit.cpp"),
+    (0x005DF000, "src/engine/gds/GDSSwitch.cpp"),                 # 0x005D3208..0x005DE020: "GDSFix" / "GDSSwitch"
     (0x005E5500, "src/engine/gds/GDSFix.cpp"),
-    (0x005E78E0, "src/engine/liz/ResBaseLXP.cpp"),               # N3liz10ResBaseLXPE (0x005E5588)
-    (0x005E7B40, "src/engine/liz/ResAnimeLXP.cpp"),              # N3liz11ResAnimeLXPE (0x005E78F8)
-    (0x005E7DA0, "src/engine/liz/ResCharaLXP.cpp"),              # N3liz11ResCharaLXPE (0x005E7B58)
-    (0x005E8020, "src/engine/liz/ResImageLXP.cpp"),              # N3liz11ResImageLXPE (0x005E7DC4)
-    (0x005E8200, "src/engine/liz/ResModelLXP.cpp"),              # N3liz11ResModelLXPE (0x005E803C)
-    (0x005EBB50, "src/engine/liz/ResObj2DLXP.cpp"),              # N3liz11ResObj2DLXPE (0x005E8228)
-    (0x005EBD00, "src/engine/liz/IResource.cpp"),                # N3liz9IResourceE (0x005EBB60)
-    (0x005EF000, "src/engine/liz/ResSkyLXP.cpp"),                # N3liz9ResSkyLXPE (0x005EBD20)
-    (0x005F0800, "src/engine/core/CLcs1.cpp"),                   # 5CLcs1 (0x005F0648)
-    (0x005F8000, "src/engine/core/CLcs2.cpp"),                   # 5CLcs2 (0x005F087C)
-    (0x00608000, "src/engine/core/lfwCObj2DManager.cpp"),
-    (0x0061AA00, "src/engine/core/lfwCObj3DManager.cpp"),
-    (0x0061DC40, "src/engine/lfw/lfwCLoop.cpp"),                 # 8lfwCLoop (0x0061AAE0)
-    (0x00621800, "src/engine/core/lxpCLoop.cpp"),                # 8lxpCLoop (0x0061DC50)
-    (0x00622660, "src/engine/core/lfwCObj2D.cpp"),               # 9lfwCObj2D (0x00621808)
-    (0x00625000, "src/engine/core/lfwCObj3D.cpp"),               # 9lfwCObj3D (0x00622674)
+    (0x005E78E0, "src/engine/liz/ResBaseLXP.cpp"),                # N3liz10ResBaseLXPE (0x005E5588)
+    (0x005E7B40, "src/engine/liz/ResAnimeLXP.cpp"),               # N3liz11ResAnimeLXPE (0x005E78F8)
+    (0x005E7DA0, "src/engine/liz/ResCharaLXP.cpp"),               # N3liz11ResCharaLXPE (0x005E7B58)
+    (0x005E8020, "src/engine/liz/ResImageLXP.cpp"),               # N3liz11ResImageLXPE (0x005E7DC4)
+    (0x005E8200, "src/engine/liz/ResModelLXP.cpp"),               # N3liz11ResModelLXPE (0x005E803C)
+    (0x005EBB50, "src/engine/liz/ResObj2DLXP.cpp"),               # N3liz11ResObj2DLXPE (0x005E8228)
+    (0x005EBD00, "src/engine/liz/IResource.cpp"),                 # N3liz9IResourceE (0x005EBB60)
+    (0x005EF000, "src/engine/liz/ResSkyLXP.cpp"),                 # N3liz9ResSkyLXPE (0x005EBD20)
+    (0x005F0800, "src/engine/core/CLcs1.cpp"),                    # 5CLcs1 (0x005F0648)
+    (0x005F8000, "src/engine/core/CLcs2.cpp"),                    # 5CLcs2 (0x005F087C)
+    (0x00608000, "src/engine/lfw/lfwCObj2DManager.cpp"),
+    (0x0061AA00, "src/engine/lfw/lfwCObj3DManager.cpp"),
+    (0x0061DC40, "src/engine/lfw/lfwCLoop.cpp"),                  # 8lfwCLoop (0x0061AAE0)
+    (0x00621800, "src/engine/lxp/lxpCLoop.cpp"),                  # 8lxpCLoop (0x0061DC50)
+    (0x00622660, "src/engine/lfw/lfwCObj2D.cpp"),                 # 9lfwCObj2D (0x00621808)
+    (0x00625000, "src/engine/lfw/lfwCObj3D.cpp"),                 # 9lfwCObj3D (0x00622674)
     # _ZNK... (const methods in alphabetical mangled order, 0x00625008 - 0x00677000)
-    (0x00625B00, "src/engine/lxp/lxpCDrwRes.cpp"),               # _ZNK10lxpCDrwRes (0x00625008)
-    (0x00626960, "src/engine/lfw/lfwCMessage.cpp"),              # _ZNK11lfwCMessage (0x00625B58)
-    (0x00626C80, "src/engine/lfw/lfwCObjLine.cpp"),              # _ZNK11lfwCObjLine (0x00626978)
-    (0x00627260, "src/engine/lxp/lxpCMessage.cpp"),              # _ZNK11lxpCMessage (0x00626C84)
-    (0x006283C0, "src/engine/lxp/lxpCObjBlur.cpp"),              # _ZNK11lxpCObjBlur (0x00627278)
-    (0x00628EA0, "src/engine/lfw/lfwCObjImage.cpp"),             # _ZNK12lfwCObjImage (0x006283D4)
-    (0x006290E0, "src/engine/lxp/lxpCObjAnime.cpp"),             # _ZNK12lxpCObjAnime (0x00628EBC)
-    (0x0062AC40, "src/engine/lxp/lxpCObjChara.cpp"),             # _ZNK12lxpCObjChara (0x006290F0)
-    (0x0062B600, "src/engine/lxp/lxpCResAnime.cpp"),             # _ZNK12lxpCResAnime (0x0062AF98)
-    (0x0062D2E0, "src/engine/lxp/lxpCResChara.cpp"),             # _ZNK12lxpCResChara (0x0062B614)
-    (0x0062E560, "src/engine/lxp/lxpCResModel.cpp"),             # _ZNK12lxpCResModel (0x0062D2E8)
-    (0x0062F080, "src/engine/lxp/lxpCObjLocus1.cpp"),            # _ZNK13lxpCObjLocus1 (0x0062E588)
-    (0x00630200, "src/engine/lxp/lxpCObjCapture.cpp"),           # _ZNK14lxpCObjCapture (0x0062F644)
-    (0x00635000, "src/engine/lxp/lxpCResParticle.cpp"),          # _ZNK15lxpCResParticle (0x00630714)
-    (0x00642000, "src/engine/core/lxpCObjCharaMerge.cpp"),       # _ZNK17lxpCObjCharaMerge (0x00635154)
-    (0x00652000, "src/engine/core/lfwCCameraManager.cpp"),
-    (0x00662000, "src/engine/core/lxpCCameraControl.cpp"),
-    (0x00673A80, "src/engine/core/lxpCObjSimpleModel.cpp"),
-    (0x00674590, "src/engine/lfw/lfwCLoop.cpp"),                 # _ZNK8lfwCLoop (0x00673A8C)
-    (0x006753A0, "src/engine/core/lxpCLoop.cpp"),                # _ZNK8lxpCLoop (0x006745A0)
-    (0x00676800, "src/engine/core/lfwCObj3D.cpp"),               # _ZNK9lfwCObj3D (0x006753AC)
-    (0x00684000, "src/engine/core/lxpCObjParticle.cpp"),         # 0x0067684C: 15lxpCObjParticle
-    (0x00694000, "src/engine/core/lxpCMemory.cpp"),              # 0x0067A3A8: "lxp_mem_sys" / "lxp_mem_dev"
-    (0x006A4000, "src/engine/core/lxpCStack.cpp"),
-    (0x006B4000, "src/engine/core/lxpCObjEasyDOF.cpp"),          # 14lxpCObjEasyDOF (0x006B3034)
-    (0x006C4000, "src/engine/core/lxpCCameraMotion.cpp"),        # 16lxpCCameraMotion (0x006B2410)
-    (0x006D4000, "src/engine/core/lxpCOpenGLES.cpp"),
-    (0x006E4000, "src/engine/core/lxpCBGProcess.cpp"),
-    (0x00700000, "src/engine/core/lfwCLoop.cpp"),                # 8lfwCLoop (0x006EDA5C)
+    (0x00625B00, "src/engine/lxp/lxpCDrwRes.cpp"),                # _ZNK10lxpCDrwRes (0x00625008)
+    (0x00626960, "src/engine/lfw/lfwCMessage.cpp"),               # _ZNK11lfwCMessage (0x00625B58)
+    (0x00626C80, "src/engine/lfw/lfwCObjLine.cpp"),               # _ZNK11lfwCObjLine (0x00626978)
+    (0x00627260, "src/engine/lxp/lxpCMessage.cpp"),               # _ZNK11lxpCMessage (0x00626C84)
+    (0x006283C0, "src/engine/lxp/lxpCObjBlur.cpp"),               # _ZNK11lxpCObjBlur (0x00627278)
+    (0x00628EA0, "src/engine/lfw/lfwCObjImage.cpp"),              # _ZNK12lfwCObjImage (0x006283D4)
+    (0x006290E0, "src/engine/lxp/lxpCObjAnime.cpp"),              # _ZNK12lxpCObjAnime (0x00628EBC)
+    (0x0062AC40, "src/engine/lxp/lxpCObjChara.cpp"),              # _ZNK12lxpCObjChara (0x006290F0)
+    (0x0062B600, "src/engine/lxp/lxpCResAnime.cpp"),              # _ZNK12lxpCResAnime (0x0062AF98)
+    (0x0062D2E0, "src/engine/lxp/lxpCResChara.cpp"),              # _ZNK12lxpCResChara (0x0062B614)
+    (0x0062E560, "src/engine/lxp/lxpCResModel.cpp"),              # _ZNK12lxpCResModel (0x0062D2E8)
+    (0x0062F080, "src/engine/lxp/lxpCObjLocus1.cpp"),             # _ZNK13lxpCObjLocus1 (0x0062E588)
+    (0x00630200, "src/engine/lxp/lxpCObjCapture.cpp"),            # _ZNK14lxpCObjCapture (0x0062F644)
+    (0x00635000, "src/engine/lxp/lxpCResParticle.cpp"),           # _ZNK15lxpCResParticle (0x00630714)
+    (0x00642000, "src/engine/lxp/lxpCObjCharaMerge.cpp"),         # _ZNK17lxpCObjCharaMerge (0x00635154)
+    (0x00652000, "src/engine/lfw/lfwCCameraManager.cpp"),
+    (0x00662000, "src/engine/lxp/lxpCCameraControl.cpp"),
+    (0x00673A80, "src/engine/lxp/lxpCObjSimpleModel.cpp"),
+    (0x00674590, "src/engine/lfw/lfwCLoop.cpp"),                  # _ZNK8lfwCLoop (0x00673A8C)
+    (0x006753A0, "src/engine/lxp/lxpCLoop.cpp"),                  # _ZNK8lxpCLoop (0x006745A0)
+    (0x00676800, "src/engine/lfw/lfwCObj3D.cpp"),                 # _ZNK9lfwCObj3D (0x006753AC)
+    (0x00684000, "src/engine/lxp/lxpCObjParticle.cpp"),           # 0x0067684C: 15lxpCObjParticle
+    (0x00694000, "src/engine/lxp/lxpCMemory.cpp"),                # 0x0067A3A8: "lxp_mem_sys" / "lxp_mem_dev"
+    (0x006A4000, "src/engine/lxp/lxpCStack.cpp"),
+    (0x006B4000, "src/engine/lxp/lxpCObjEasyDOF.cpp"),            # 14lxpCObjEasyDOF (0x006B3034)
+    (0x006C4000, "src/engine/lxp/lxpCCameraMotion.cpp"),          # 16lxpCCameraMotion (0x006B2410)
+    (0x006D4000, "src/engine/lxp/lxpCOpenGLES.cpp"),
+    (0x006E4000, "src/engine/lxp/lxpCBGProcess.cpp"),
+    (0x00700000, "src/engine/lfw/lfwCLoop.cpp"),                  # 8lfwCLoop (0x006EDA5C)
 ]
 
 

@@ -44,12 +44,22 @@ Este skill define el rol de **profesor / mentor técnico** en ingeniería invers
 
 ---
 
-## 🛠️ Modos del Mentor
+## 🛠️ Modos del Mentor y Planificador Bottom-Up (`tools/rea_evidence.py`)
 
-Cuando el usuario pida guía o use esta skill, el mentor debe:
-1. **Evaluar el estado actual:** Qué funciones están en desarrollo y qué bloqueo existe.
-2. **Explicar el ensamblador línea por línea:** Traducir las instrucciones ARM a conceptos de C (por ejemplo: `ands r1, r0, #-2147483648; bmi .L...` -> comprobación del bit de signo / error negativo).
-3. **Proponer el siguiente escalón adecuado:** Si el usuario está atascado en una función de 72 bytes, recomendar 2 o 3 funciones de 24-36 bytes para ganar confianza y desbloquear dependencias.
-4. **Validar la sintaxis según AGENTS.md:** Asegurar que los structs usen hexadecimal, estén en `include/`, y no haya aritmética cruda sobre `void*`.
-5. **Plantilla `.c` obligatoria antes de cada ejercicio:** Antes de que el usuario empiece a decompilar una función, crear SIEMPRE el archivo plantilla `src/<layer>/<subsystem>/<symbol>.c` con el ensamblador objetivo comentado arriba como referencia y la definición de la función (`firma + {}`) lista para implementar. Una vez decompilada y verificada, eliminar el comentario del ensamblador de referencia.
+Cuando el usuario pida guía sobre qué función atacar a continuación o cómo estructurar una unidad C/C++, el mentor debe apoyarse en el inspector de evidencia **REA 3DS**:
+
+```bash
+python3 tools/rea_evidence.py --unit <unidad.cpp>
+# o para una función concreta:
+python3 tools/rea_evidence.py --func <0xADDRESS|symbol>
+```
+
+1. **Planificación Bottom-Up verificada por grafo (`--unit`):**
+   - `tools/rea_evidence.py --unit <unidad.cpp>` ordena automáticamente todas las funciones pendientes de una unidad (`CTR_Api.cpp`, `lfwCLoop.cpp`, etc.) priorizando las **hojas listas (`✅ READY`, 0 subfunciones sin decompilar)** de menor a mayor tamaño en bytes.
+   - Además, genera la **Evidencia Agregada de Layout de Struct (`[r0, #0x...]`)** cruzando todos los métodos de la unidad para que el desarrollador vea de un vistazo todos los offsets (`+0x00`, `+0x04`, `+0x08`...) y sus tipos (`u8`, `u16`, `u32`, `f32`) antes de definir el `struct` o `class` en `include/`.
+2. **Evaluar el estado actual:** Qué funciones están en desarrollo y qué bloqueo existe.
+3. **Explicar el ensamblador línea por línea (Método Socrático):** Traducir las instrucciones ARM a conceptos de C (por ejemplo: `ands r1, r0, #-2147483648; bmi .L...` -> comprobación del bit de signo / error negativo) usando las secciones `[1] EVIDENCE` y `[3] OBSERVATIONS` de `rea_evidence.py` sin regalar nunca la solución C directa.
+4. **Proponer el siguiente escalón adecuado:** Si el usuario está atascado en una función compleja o con dependencias pendientes (`⏳ Wait`), recomendar las primeras 2 o 3 hojas `✅ READY` de la cola Bottom-Up de esa unidad para ganar confianza y desbloquear las ramas.
+5. **Validar la sintaxis según AGENTS.md:** Asegurar que los structs usen hexadecimal, estén en `include/`, y no haya aritmética cruda sobre `void*`.
+6. **Plantilla `.c` / `.cpp` obligatoria antes de cada ejercicio:** Antes de que el usuario empiece a decompilar una función, crear SIEMPRE el archivo plantilla con el ensamblador objetivo comentado arriba como referencia y la definición de la función (`firma + {}`) lista para implementar. Una vez decompilada y verificada, eliminar el comentario del ensamblador de referencia.
 

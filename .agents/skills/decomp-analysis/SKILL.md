@@ -31,12 +31,18 @@ The skill accepts a **function identifier** (`<target>`), plus optional flags de
 
 ## 2. Step-by-Step Execution Procedure
 
-### Step 1: Run the Automated Analyzer Script
-Execute the bundled analyzer script passing the function identifier:
+### Step 1: Run the Automated Analyzer & REA Evidence Scripts
+Execute both the analyzer script and the REA 3DS evidence inspector passing the function identifier:
 ```bash
 python3 .agents/skills/decomp-analysis/scripts/analyze_function.py <target>
+python3 tools/rea_evidence.py --func <target>
 ```
-- The script automatically inspects `extracted/code.raw.bin` (at base VMA `0x00100000`), resolves function bounds, disassembles ARM/Thumb instructions, resolves literal pool words (`.rodata` strings, vtables, constants), scans cross-references (XREFs), and infers the hierarchical classification.
+- `analyze_function.py` inspects `extracted/code.raw.bin` (at base VMA `0x00100000`), resolves function bounds, disassembles ARM/Thumb instructions, and proposes initial names.
+- `tools/rea_evidence.py --func <target>` (or `make rea FUNC=<target>`) generates a structured 4-pillar **REA (Reverse Engineer Anything)** report separating:
+  1. **`[1] EVIDENCE`**: Verified RTTI vtable slots (`vtable[slot]`), 3DS TLS usage (`mrc p15, 0, rX, c13, c0, 3`), IPC command headers (`CmdID`, `NormalParams`, `TranslateParams`), kernel `svc` syscalls, and literal pool values.
+  2. **`[2] GRAPH / XREFs`**: All incoming callers across `.text`, outgoing callees with match status, and whether the function is **Bottom-Up Ready** (0 unmatched dependencies).
+  3. **`[3] OBSERVATIONS`**: Exact struct field accesses (`[r0 + 0x...]`) with inferred C types (`u8`, `u16`, `u32`, `f32`, `u64`) and read/write modes.
+  4. **`[4] LIMITATIONS / UNKNOWNS`**: Unmatched callees, unnamed globals, and indirect `blx rX` calls requiring curation.
 - If the function size is not in the catalog or needs overriding, pass `--size <bytes>`. For Thumb functions, pass `--thumb`.
 - For detailed ABI rules, consult [3ds-abi-and-patterns.md](./references/3ds-abi-and-patterns.md).
 
